@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>Listado de las gasolineras más baratas de España según el tipo de carburante</h2>
+  <div class="row">
+    <div class="col-2">
+      <button (click)="handleRanking('precio_biodiesel')" type="button" class="btn btn-primary col-12 mt-1">Biodiesel</button>
+      <button (click)="handleRanking('precio_bioetanol')" type="button" class="btn btn-primary col-12 mt-1">Bioetanol</button>
+      <button (click)="handleRanking('precio_gas_natural_comprimido')" type="button" class="btn btn-primary col-12 mt-1">GNC</button>
+      <button (click)="handleRanking('precio_gas_natural_licuado')" type="button" class="btn btn-primary col-12 mt-1">Gas
+        natural licuado</button>
+      <button (click)="handleRanking('precio_gases_licuados_petroleo')" type="button" class="btn btn-primary col-12 mt-1">GLP</button>
+      <button (click)="handleRanking('precio_gasoleo_a')" type="button" class="btn btn-primary col-12 mt-1">Gasoleo A</button>
+      <button (click)="handleRanking('precio_gasoleo_b')" type="button" class="btn btn-primary col-12 mt-1">Gasoleo B</button>
+      <button (click)="handleRanking('precio_gasolina_95_proteccion')" type="button" class="btn btn-primary col-12 mt-1">Gasolina
+        95</button>
+      <button (click)="handleRanking('precio_gasolina_98')" type="button" class="btn btn-primary col-12 mt-1">Gasolina
+        98</button>
+      <button (click)="handleRanking('precio_nuevo_gasoleo_a')" type="button" class="btn btn-primary col-12 mt-1">Nuevo
+        gasoleo A</button>
+    </div>
+    <div class="col-10">
+      <app-vista-ranking [titulo]="tituloSeleccionado" [tipoHijo]="tipoButton" [arrTopRanking]="rankingSeleccionado"
+        *ngIf="rankingSeleccionado"></app-vista-ranking>
+    </div>
+  </div>
+
+</div>

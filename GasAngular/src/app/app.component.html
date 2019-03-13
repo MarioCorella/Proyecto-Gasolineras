@@ -1,0 +1,38 @@
+<div class="container-fluid">
+
+
+  <header class="row">
+    <div class="titulo col-10">
+      <h1>Elige el precio de tu gasolina</h1>
+    </div>
+    <div class="login cols-1">
+      <a class="nav-link active" [routerLink]="['/login']">Log in</a>
+    </div>
+    <div class="registro cols-1">
+      <a class="nav-link active" [routerLink]="['/registro']">Registrate</a>
+    </div>
+  </header>
+
+
+  <div class="row">
+    <nav class="nav flex-column col-2">
+      <a class="nav-link active" [routerLink]="['/inicio']" [routerLinkActive]="'activa'">Inicio</a>
+      <a class="nav-link active" [routerLink]="['/filtros']" [routerLinkActive]="'activa'">Buscador</a>
+      <a class="nav-link active" [routerLink]="['/ranking']" [routerLinkActive]="'activa'">Ranking</a>
+    </nav>
+
+    <div class="col-10">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <div class="row">
+    <footer class="col-12">
+
+      <h6>Fuente: Datos del Ministerio para la Transición Ecológica.</h6>
+      <p>La información publicada en este sitio web tiene únicamente carácter informativo y no constituye una
+        comunicación de actos administrativos ni comunicados oficiales.</p>
+    </footer>
+  </div>
+
+</div>

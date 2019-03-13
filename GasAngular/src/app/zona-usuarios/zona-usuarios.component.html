@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <h2 class="col-10">Encuentra tu gasolinera más cercana</h2>
+    <button (click)="editarUsuario()" class="btn btn-primary mt-1 col-2 ">Edita tu perfil</button>
+  </div>
+
+  <div class="row mt-3">
+
+    <div #googleMap style="width: 500px; height: 400px" class="col-6"></div>
+
+    <div class="col-6">
+      <div *ngFor="let item of arrGasolineras" class="card col-12">
+        <div class="card-header">
+          {{item.rotulo}}
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{item.direccion}}</p>
+          <button (click)="generateRoute(item.latitud, item.longitud)" class="btn btn-info">Como llegar</button>
+
+        </div>
+      </div>
+    </div>
+
+  </div>

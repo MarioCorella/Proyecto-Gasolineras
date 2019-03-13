@@ -1,0 +1,47 @@
+
+header {
+    background-color: darkgray;
+    border: 1px solid black;
+    text-align: center;
+    font-weight: bold;
+}
+.login, .registro{
+    text-align: right;
+    background-color:lightgray;
+    border: 1px solid black;   
+}
+header a{
+    text-align: center;
+    color: black;
+    height: 100%;
+   
+}
+header a:hover{
+    background-color: grey;
+}
+nav{
+    background-color: darkgrey;
+    width: 20%;
+    height: 500px;
+}
+nav a{
+    border-bottom: 1px solid black;
+    text-align: center;
+    color: black;
+    height: 33%;
+    padding-top: 55px;
+    font-size: 1.5rem;
+}
+nav a:hover{
+    background-color: grey;
+}
+header .activa{
+    font-size: 20px;
+    font-weight: bolder;
+    background-color: grey;
+}
+footer{
+    background-color: darkgray;
+    border-bottom: 1px solid black;
+    text-align: center;
+}
