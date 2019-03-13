@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { GasService } from '../gas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edita-usuario',
@@ -14,38 +15,78 @@ import { GasService } from '../gas.service';
 
 export class EditaUsuarioComponent implements OnInit {
 
+  id: number
   tokenUsuario: any
   dataUsuarioEdit: any[]
   formEdita: FormGroup;
+  actualizado: any[]
 
-  constructor(private gasService: GasService) {
+  constructor(private gasService: GasService,
+              private router: Router) {
 
   }
 
   ngOnInit() {
+
     this.tokenUsuario = localStorage.getItem('Token')
     this.gasService.getUsuario(this.tokenUsuario).then((res) => {
-    this.dataUsuarioEdit = res
-    
+      //console.log(res)
+      this.dataUsuarioEdit = res
+      this.id = res.id
+
+      this.formEdita = new FormGroup({
+        nombre: new FormControl(res.nombre, [
+          Validators.required
+        ]),
+        email: new FormControl(res.email, [
+          Validators.required
+        ])
+      })
     })
 
 
-    this.formEdita = new FormGroup({
-      nombre: new FormControl('', [
-      Validators.required
-      ]),
-      email: new FormControl('', [
-      Validators.required
-      ])
-    })
+
   }
 
-  handleEditaUsuario(){
-    console.log(this.formEdita.value)
-    // this.gasService.editaUsuario(this.formEdita.value)
+  handleEditaUsuario() {
+    this.gasService.editaUsuario(
+      this.id,
+      this.formEdita.value.nombre,
+      this.formEdita.value.email,
+     
+    ).then((res) => {
+      this.actualizado = res
+      if(res){
+        this.router.navigate(['/zona_usuarios'])
+      }
+    })
   }
 
 
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/),

@@ -11,11 +11,11 @@ declare var google;
 })
 export class ZonaUsuariosComponent implements OnInit {
 
-  @ViewChild('googleMap') gMap:any
-  
+  @ViewChild('googleMap') gMap: any
+
   latitud: any
   longitud: any
-  arrGasolineras: any []
+  arrGasolineras: any[]
   map: any
   directionsDisplay: any
   directionsService: any
@@ -23,27 +23,23 @@ export class ZonaUsuariosComponent implements OnInit {
   markerLong: any
   radio: any
   position: any
-  constructor(private gasServive: GasService,
-              private router: Router) { }
+  constructor(private gasServive: GasService, private router: Router) {
 
-  ngOnInit() {
-      if (navigator.geolocation)
-      {
-        navigator.geolocation.getCurrentPosition(this.showPosition.bind(this), this.showError)
-      }else{
-    // No hay soporte para la geolocalización: podemos desistir o utilizar algún método alternativo
-      }
+    this.radio = 1000
   }
 
-  showPosition(position){
+  ngOnInit() {
+  }
+
+  showPosition(position) {
     //console.log(position)
     this.latitud = position.coords.latitude
     this.longitud = position.coords.longitude
-    this.radio = parseInt(prompt('Introduce un radio de busqueda en metros'))
-    this.gasServive.getGasolinerasLocalizacion(this.latitud, this.longitud, this.radio).then((res) => {
-    this.arrGasolineras = res
-    //console.log(this.arrGasolineras)
-    this.loadMap(position)
+    //this.radio = parseInt(prompt('Introduce un radio de busqueda en metros'))
+    this.gasServive.getGasolinerasLocalizacion(this.latitud, this.longitud, parseInt(this.radio)).then((res) => {
+      this.arrGasolineras = res
+      //console.log(this.arrGasolineras)
+      this.loadMap(position)
     })
   }
 
@@ -69,48 +65,57 @@ export class ZonaUsuariosComponent implements OnInit {
 
     this.directionsService = new google.maps.DirectionsService()
     this.directionsDisplay = new google.maps.DirectionsRenderer()
-    
+
     let propsMap = {
-        center: new google.maps.LatLng(position.coords.latitude,
+      center: new google.maps.LatLng(position.coords.latitude,
         position.coords.longitude),
-        zoom: 10,
-        mapTypeId: google.maps.MapTypeId.SATELLITE
+      zoom: 10,
+      mapTypeId: google.maps.MapTypeId.SATELLITE
     }
     this.map = new google.maps.Map(this.gMap.nativeElement, propsMap)
     this.getMarkersPosition()
 
     this.directionsDisplay.setMap(this.map)
-   
-   
+
+
   }
 
-  getMarkersPosition(){
-    for(let i = 0; i<this.arrGasolineras.length; i++){
+  getMarkersPosition() {
+    let bounds = new google.maps.LatLngBounds()
+    for (let i = 0; i < this.arrGasolineras.length; i++) {
       let marker = new google.maps.Marker({
         position: new google.maps.LatLng(this.arrGasolineras[i].latitud, this.arrGasolineras[i].longitud),
         title: this.arrGasolineras[i].rotulo,
         map: this.map
-      }) 
+      })
+      bounds.extend(new google.maps.LatLng(this.arrGasolineras[i].latitud, this.arrGasolineras[i].longitud))
     }
+    this.map.fitBounds(bounds)
   }
- 
-  generateRoute(latGas, lngGas){
-      let start = new google.maps.LatLng(this.latitud, this.longitud)
-      let end = new google.maps.LatLng(latGas, lngGas)
-      //console.log(start, end)
 
-      let requestOpts = {
-        origin: start,
-        destination: end,
-        travelMode: google.maps.TravelMode['DRIVING']
-      }
-        
-        this.directionsService.route(requestOpts, (result) => {
-        this.directionsDisplay.setDirections(result)
-        console.log(result.routes[0])
-        })
+  generateRoute(latGas, lngGas) {
+    let start = new google.maps.LatLng(this.latitud, this.longitud)
+    let end = new google.maps.LatLng(latGas, lngGas)
+    //console.log(start, end)
+
+    let requestOpts = {
+      origin: start,
+      destination: end,
+      travelMode: google.maps.TravelMode['DRIVING']
+    }
+
+    this.directionsService.route(requestOpts, (result) => {
+      this.directionsDisplay.setDirections(result)
+      console.log(result.routes[0])
+    })
   }
-  editarUsuario(){
+  editarUsuario() {
     this.router.navigate(['/edita-usuario'])
+  }
+
+  activarLocalizacion() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.showPosition.bind(this), this.showError)
+    }
   }
 }

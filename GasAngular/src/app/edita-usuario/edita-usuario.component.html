@@ -1,23 +1,58 @@
 <div class="container">
   <h3>Edita tu perfil</h3>
-
+  <h4 *ngIf="actualizado">Datos del usuario actualizados</h4>
   <form  novalidate
   [formGroup]="formEdita" 
-  (ngSubmit)="handleEditaUsuario()">
+  (ngSubmit)="handleEditaUsuario()" *ngIf="formEdita">
 
       <div class="form-group">
         <label for="nombre">Usuario</label>
-        <input type="text" name="nombre" value = {{dataUsuarioEdit.nombre}} class="form-control">
+        <input type="text" name="nombre" class="form-control" formControlName="nombre">
       </div>
 
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email"  name="email" value="{{dataUsuarioEdit.email}}" class="form-control">
-        <p *ngIf="formEdita.controls.email.errors?.required && formEdita.controls.email.dirty">El campo email es requerido</p>
-        <p *ngIf="formEdita.controls['email'].errors?.pattern && formEdita.controls['email'].dirty">El campo debe ser un mail correcto</p>
+        <input type="email" name="email"  class="form-control" formControlName="email">
+       
       </div>
 
-      <button type="submit" [ngClass]="{'button-disable': formEdita.invalid}" [disabled]="formEdita.invalid"  class="btn btn-primary mb-3">Editar</button>
+      <button type="submit"   class="btn btn-primary mb-3">Editar</button>
      
   </form>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <p *ngIf="formEdita.controls.email.errors?.required && formEdita.controls.email.dirty">El campo email es requerido</p>
+<p *ngIf="formEdita.controls['email'].errors?.pattern && formEdita.controls['email'].dirty">El campo debe ser un mail correcto</p> -->
+
+<!-- button     [ngClass]="{'button-disable': formEdita.invalid}" [disabled]="formEdita.invalid" -->

@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class RegistroUsuariosComponent implements OnInit {
 
   formRegistro: FormGroup
+  aviso: string
 
   constructor(private gasService: GasService,
               private router: Router) {}
@@ -34,12 +35,20 @@ export class RegistroUsuariosComponent implements OnInit {
 
   handleRegistro() {
     this.gasService.enviarDatosReg(this.formRegistro.value).then((res)=>{
+      console.log(res)
        //console.log(res['affectedRows'])
        if(res['affectedRows'] != 0){
         this.router.navigate(['/zona_usuarios'])
        }else{
          this.router.navigate(['/registro'])
+          this.aviso = 'La dirección de correo introducida ya estaba registrada'
        }
     })
+   
+
+    
+
+
+    
   }
 }

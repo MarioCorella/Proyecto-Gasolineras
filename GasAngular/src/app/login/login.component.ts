@@ -10,6 +10,10 @@ import { GasService } from '../gas.service';
 })
 export class LoginComponent implements OnInit {
  
+  
+
+
+
   formLogin: FormGroup
   constructor(private gasService: GasService,
               private router: Router) { }

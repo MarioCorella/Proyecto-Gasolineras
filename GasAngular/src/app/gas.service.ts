@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class GasService {
  
+  urlAccess = "http://localhost:3000/api/usuarios/access"
   urlReg ="http://localhost:3000/api/usuarios/create";
   urlLogin = "http://localhost:3000/api/login/access";
   urlGas = "http://gasextractor.herokuapp.com/api/station/40.42244931586505/-3.7025214224808165/1000"
@@ -17,9 +18,14 @@ export class GasService {
   urlFiltroProvincia = "http://localhost:3000/api/filtros/provincias/";
   urlFiltroMunicipio = "http://localhost:3000/api/filtros/municipios/";
   urlFiltros = "http://localhost:3000/api/filtros";
-  urlRanking = "http://localhost:3000/api/filtros/ranking"
+  urlRanking = "http://localhost:3000/api/filtros/ranking";
+  urlUpdate = "http://localhost:3000/api/usuarios/update";
 
   constructor(private httpClient: HttpClient){}
+
+  // comprobarRegistro(email){
+  //   return this.httpClient.post<any[]>(`${this.urlAccess}`, {email: email}).toPromise()
+  // }
 
   enviarDatosReg(userData){
     return this.httpClient.post<any[]>(`${this.urlReg}`, userData).toPromise()
@@ -55,6 +61,15 @@ export class GasService {
 
   getUsuario(token){
     return this.httpClient.post<any[]>(`${this.urlEditaUsuario}`,{token: token}).toPromise()
+  }
+
+  editaUsuario(id, nombre, email){
+    console.log(nombre)
+    return this.httpClient.post<any[]>(`${this.urlUpdate}`,{
+      id: id,
+      nombre: nombre,
+      email: email
+      } ).toPromise()
   }
  
 }
