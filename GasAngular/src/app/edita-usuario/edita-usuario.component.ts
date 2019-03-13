@@ -26,6 +26,7 @@ export class EditaUsuarioComponent implements OnInit {
     this.tokenUsuario = localStorage.getItem('Token')
     this.gasService.getUsuario(this.tokenUsuario).then((res) => {
     this.dataUsuarioEdit = res
+    
     })
 
 
