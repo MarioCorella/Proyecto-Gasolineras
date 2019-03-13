@@ -24,19 +24,17 @@ export class EditaUsuarioComponent implements OnInit {
 
   ngOnInit() {
     this.tokenUsuario = localStorage.getItem('Token')
-    //console.log(this.tokenUsuario)
     this.gasService.getUsuario(this.tokenUsuario).then((res) => {
-      this.dataUsuarioEdit = res
-      //console.log(this.dataUsuarioEdit)
+    this.dataUsuarioEdit = res
     })
 
 
     this.formEdita = new FormGroup({
       nombre: new FormControl('', [
-        Validators.required
+      Validators.required
       ]),
       email: new FormControl('', [
-        Validators.required
+      Validators.required
       ])
     })
   }
