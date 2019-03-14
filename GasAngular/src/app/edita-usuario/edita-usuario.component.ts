@@ -32,13 +32,13 @@ export class EditaUsuarioComponent implements OnInit {
     this.gasService.getUsuario(this.tokenUsuario).then((res) => {
       //console.log(res)
       this.dataUsuarioEdit = res
-      this.id = res.id
+      this.id = res['id']
 
       this.formEdita = new FormGroup({
-        nombre: new FormControl(res.nombre, [
+        nombre: new FormControl(res['nombre'], [
           Validators.required
         ]),
-        email: new FormControl(res.email, [
+        email: new FormControl(res['email'], [
           Validators.required
         ])
       })

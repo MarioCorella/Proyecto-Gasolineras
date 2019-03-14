@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
 
   handleFormulario(){
     this.gasService.comprobarLogin(this.formLogin.value).then((res)=>{
+      console.log(res)
       if(res['token']){
         localStorage.setItem('Token', res['token'])
         this.router.navigate(['/zona_usuarios'])
@@ -44,13 +45,9 @@ export class LoginComponent implements OnInit {
     })
   }
  
-   
+  navRegistro(){
+    this.router.navigate(['registro'])
+  }
     
 
 }
-// if(res['error']){
-//   this.router.navigate(['/login'])
-//  }else if(res['token']){
-//    console.log(res)
-//   this.router.navigate(['/zona_usuarios'])
-//  }

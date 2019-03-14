@@ -38,7 +38,15 @@ let getRanking = (tipo) => {
             resolve(result)
         })
     })
+}
 
+let getFiltrosUsers = (tipo) => {
+    return new Promise((resolve, reject) => {
+        db.get().query(`SELECT * FROM gas_station  WHERE ${tipo} IS NOT NULL ORDER BY ${tipo} ASC `, (err, result) => {
+            if (err) return reject(err.message)
+            resolve(result)
+        })
+    })
 }
 
 
@@ -48,5 +56,6 @@ module.exports = {
     getProvincias: getProvincias,
     getMunicipios: getMunicipios,
     getGasolineras: getGasolineras,
-    getRanking: getRanking
+    getRanking: getRanking,
+    getFiltrosUsers: getFiltrosUsers
 }

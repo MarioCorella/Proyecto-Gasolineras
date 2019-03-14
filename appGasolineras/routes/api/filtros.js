@@ -49,4 +49,25 @@ router.get('/ranking', async (req, res) => {
   res.json(resultado)
 })
 
+/* http://localhost:3000/api/filtros/users */ 
+router.post('/users', async (req, res) => {
+  let tipos = [
+    'precio_biodiesel',
+    'precio_bioetanol',
+    'precio_gas_natural_comprimido',
+    'precio_gas_natural_licuado',
+    'precio_gases_licuados_petroleo',
+    'precio_gasoleo_a',
+    'precio_gasoleo_b',
+    'precio_gasolina_95_proteccion',
+    'precio_gasolina_98',
+    'precio_nuevo_gasoleo_a'
+  ]
+  let resultado = {}
+  for(let i = 0; i<tipos.length; i++){
+    let rows = await gasModel.getFiltrosUsers(tipos[i])
+    resultado[tipos[i]] = rows
+  }
+  res.json(resultado)
+})
 module.exports = router;

@@ -21,5 +21,9 @@
 
     <button type="submit" [ngClass]="{'button-disable': formLogin.invalid}" [disabled]="formLogin.invalid"  class="btn btn-primary mb-3">Enviar</button>
 
+    <div class="row">
+    <p class="col-2 offset-4">Eres nuevo....? </p>
+    <button (click)="navRegistro()" class="btn btn-primary col-2">Regístrate</button>
+  </div>
   </form>
 </div>

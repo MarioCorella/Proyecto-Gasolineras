@@ -21,21 +21,69 @@ export class ZonaUsuariosComponent implements OnInit {
   directionsService: any
   markerLat: any;
   markerLong: any
+  ngRadio: any
   radio: any
   position: any
+  tipo: string
+  //arrGasolineras: any[]
+  arrFiltrado: any[]
+  arrOrdenado: any []
+
   constructor(private gasServive: GasService, private router: Router) {
 
-    this.radio = 1000
+    this.radio = 3000
   }
 
   ngOnInit() {
+
+  }
+
+  getTipo(){
+    this.gasServive.getTipo(this.tipo).then((res) => {
+      this.arrGasolineras = res
+      this.arrFiltrado = res
+    })
+  }
+
+  filtrarPrecio(){
+    this.arrFiltrado = [...this.arrGasolineras]
+
+    this.arrFiltrado =this.arrFiltrado.filter(item => {
+      return item[this.tipo] != null
+    })
+
+    this.arrFiltrado = this.ordenar(this.arrFiltrado, this.tipo)
+    console.log(this.arrFiltrado)
+  }
+  
+  ordenar(array, clave) {
+    let arrayOrdenado = array.sort(function (a, b) {
+       return a[clave] > b[clave]  
+    })
+    return  arrayOrdenado;
+    //console.log(arrayOrdenado)
+  }
+
+  cambiarRadio() {
+    this.radio = this.ngRadio
+    //obtener los nuevos markers y pintarlos 
+    this.gasServive.getGasolinerasLocalizacion(this.latitud, this.longitud, parseInt(this.radio)).then((res) => {
+      this.arrGasolineras = res
+      this.getMarkersPosition()
+    })
+
+  }
+
+  activarLocalizacion() {
+    if (navigator.geolocation) {
+     navigator.geolocation.getCurrentPosition(this.showPosition.bind(this), this.showError)   
+    }
   }
 
   showPosition(position) {
     //console.log(position)
     this.latitud = position.coords.latitude
     this.longitud = position.coords.longitude
-    //this.radio = parseInt(prompt('Introduce un radio de busqueda en metros'))
     this.gasServive.getGasolinerasLocalizacion(this.latitud, this.longitud, parseInt(this.radio)).then((res) => {
       this.arrGasolineras = res
       //console.log(this.arrGasolineras)
@@ -74,10 +122,7 @@ export class ZonaUsuariosComponent implements OnInit {
     }
     this.map = new google.maps.Map(this.gMap.nativeElement, propsMap)
     this.getMarkersPosition()
-
     this.directionsDisplay.setMap(this.map)
-
-
   }
 
   getMarkersPosition() {
@@ -106,16 +151,19 @@ export class ZonaUsuariosComponent implements OnInit {
 
     this.directionsService.route(requestOpts, (result) => {
       this.directionsDisplay.setDirections(result)
-      console.log(result.routes[0])
+      //console.log(result.routes[0])
     })
   }
   editarUsuario() {
     this.router.navigate(['/edita-usuario'])
   }
 
-  activarLocalizacion() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.showPosition.bind(this), this.showError)
-    }
+  logOut(){
+    localStorage.removeItem('Token')
+    this.router.navigate(['inicio'])
   }
+
+  
+
+
 }

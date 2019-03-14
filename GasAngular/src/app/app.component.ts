@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GasService } from './gas.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Gas';
+  constructor(public gasService: GasService){}
 }
+

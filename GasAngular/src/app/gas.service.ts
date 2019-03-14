@@ -20,6 +20,7 @@ export class GasService {
   urlFiltros = "http://localhost:3000/api/filtros";
   urlRanking = "http://localhost:3000/api/filtros/ranking";
   urlUpdate = "http://localhost:3000/api/usuarios/update";
+  urlFiltrosUsers = "http://localhost:3000/api/filtros/users";
 
   constructor(private httpClient: HttpClient){}
 
@@ -28,7 +29,7 @@ export class GasService {
   // }
 
   enviarDatosReg(userData){
-    return this.httpClient.post<any[]>(`${this.urlReg}`, userData).toPromise()
+    return this.httpClient.post<any>(`${this.urlReg}`, userData).toPromise()
   }
 
   comprobarLogin(loginData){
@@ -70,6 +71,18 @@ export class GasService {
       nombre: nombre,
       email: email
       } ).toPromise()
+  }
+
+  estadoLogin() {
+    if(localStorage.getItem('Token')){
+      return true
+    }else{
+      return false
+    }
+  }
+
+  getTipo(tipo){
+    return this.httpClient.post<any[]>(`${this.urlFiltrosUsers}`, {tipo: tipo}).toPromise()
   }
  
 }
