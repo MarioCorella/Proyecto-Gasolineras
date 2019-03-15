@@ -10,7 +10,7 @@ import { GasService } from '../gas.service';
 })
 export class LoginComponent implements OnInit {
  
-  
+  nombreUsuario: string
 
 
 
@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
 
   handleFormulario(){
     this.gasService.comprobarLogin(this.formLogin.value).then((res)=>{
+     this.nombreUsuario = this.formLogin.value.nombre
       console.log(res)
       if(res['token']){
         localStorage.setItem('Token', res['token'])

@@ -43,17 +43,13 @@ export class EditaUsuarioComponent implements OnInit {
         ])
       })
     })
-
-
-
   }
 
   handleEditaUsuario() {
     this.gasService.editaUsuario(
       this.id,
       this.formEdita.value.nombre,
-      this.formEdita.value.email,
-     
+      this.formEdita.value.email,   
     ).then((res) => {
       this.actualizado = res
       if(res){
@@ -61,8 +57,6 @@ export class EditaUsuarioComponent implements OnInit {
       }
     })
   }
-
-
 
 
 }

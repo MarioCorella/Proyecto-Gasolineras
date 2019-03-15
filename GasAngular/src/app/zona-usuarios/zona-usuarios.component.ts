@@ -25,17 +25,26 @@ export class ZonaUsuariosComponent implements OnInit {
   radio: any
   position: any
   tipo: string
-  //arrGasolineras: any[]
   arrFiltrado: any[]
+  tokenUsuario: string
+  nombreUsuario: string
   
 
   constructor(private gasService: GasService, private router: Router) {
 
-    this.radio = 3000
+    this.radio = 5000
   }
 
   ngOnInit() {
-
+    this.tokenUsuario = localStorage.getItem('Token')
+    this.gasService.getUsuario(this.tokenUsuario).then((res) => {
+      this.nombreUsuario = this.capitalizeFirstLetter(res['nombre'])
+      
+    })
+  }
+  
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
   cambiarRadio() {
