@@ -1,4 +1,131 @@
+.container-fluid{
+    background-color: #dd7600;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    font-family: 'Roboto Slab', serif;
+    font-size: 18px;
+}
+h1{
+    font-size: 65px;
+    font-weight: bolder;
+    color: #018790;
+}
 header {
+    text-align: center;
+    font-weight: bold;
+    padding: 50px;
+}
+
+header a{
+    margin-left: 10px;
+    text-align: center;
+    border: 2px solid #174144;;
+    border-radius: 35px;
+    background-color: #018790;
+    color: black;
+}
+header a:hover{
+    color:white;
+    transition: 350ms;
+}
+nav{
+  
+    width: 20%;
+    height: 500px;
+}
+nav a{
+    border-bottom: 1px solid rgb(32, 10, 10);
+    text-align: center;
+    color: black;
+    height: 33%;
+    padding-top: 55px;
+    font-size: 1.5rem;
+}
+nav a:hover{
+    background-color: grey;
+}
+header .activa{
+    font-size: 20px;
+    font-weight: bolder;
+    
+}
+footer{
+  
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* header {
     background-color: darkgray;
     border: 1px solid black;
     text-align: center;
@@ -41,104 +168,6 @@ header .activa{
 }
 footer{
     background-color: darkgray;
-    border-bottom: 1px solid black;
-    text-align: center;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* .container-fluid{
-    background-image: url(./../assets/images/fondoNaranja.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-header {
-    
-    border: 1px solid black;
-    text-align: center;
-    font-weight: bold;
-}
-.login, .registro{
-    text-align: right;
-    
-    border: 1px solid black;   
-}
-header a{
-    text-align: center;
-    color: black;
-    height: 100%;
-   
-}
-header a:hover{
-    background-color: grey;
-}
-nav{
-  
-    width: 20%;
-    height: 500px;
-}
-nav a{
-    border-bottom: 1px solid rgb(32, 10, 10);
-    text-align: center;
-    color: black;
-    height: 33%;
-    padding-top: 55px;
-    font-size: 1.5rem;
-}
-nav a:hover{
-    background-color: grey;
-}
-header .activa{
-    font-size: 20px;
-    font-weight: bolder;
-    
-}
-footer{
-  
     border-bottom: 1px solid black;
     text-align: center;
 } */
