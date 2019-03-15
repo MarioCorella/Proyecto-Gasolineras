@@ -27,9 +27,9 @@ export class ZonaUsuariosComponent implements OnInit {
   tipo: string
   //arrGasolineras: any[]
   arrFiltrado: any[]
-  arrOrdenado: any []
+  
 
-  constructor(private gasServive: GasService, private router: Router) {
+  constructor(private gasService: GasService, private router: Router) {
 
     this.radio = 3000
   }
@@ -38,10 +38,14 @@ export class ZonaUsuariosComponent implements OnInit {
 
   }
 
-  getTipo(){
-    this.gasServive.getTipo(this.tipo).then((res) => {
-      this.arrGasolineras = res
+  cambiarRadio() {
+    this.radio = this.ngRadio
+    //obtener los nuevos markers y pintarlos 
+    this.gasService.getGasolinerasLocalizacion(this.latitud, this.longitud, parseInt(this.radio)).then((res) => {
+      this.arrGasolineras = res//array por ubicación y radio
       this.arrFiltrado = res
+      console.log(this.arrGasolineras)
+      this.getMarkersPosition()
     })
   }
 
@@ -51,11 +55,10 @@ export class ZonaUsuariosComponent implements OnInit {
     this.arrFiltrado =this.arrFiltrado.filter(item => {
       return item[this.tipo] != null
     })
-
     this.arrFiltrado = this.ordenar(this.arrFiltrado, this.tipo)
     console.log(this.arrFiltrado)
   }
-  
+
   ordenar(array, clave) {
     let arrayOrdenado = array.sort(function (a, b) {
        return a[clave] > b[clave]  
@@ -63,29 +66,32 @@ export class ZonaUsuariosComponent implements OnInit {
     return  arrayOrdenado;
     //console.log(arrayOrdenado)
   }
+ 
 
-  cambiarRadio() {
-    this.radio = this.ngRadio
-    //obtener los nuevos markers y pintarlos 
-    this.gasServive.getGasolinerasLocalizacion(this.latitud, this.longitud, parseInt(this.radio)).then((res) => {
-      this.arrGasolineras = res
-      this.getMarkersPosition()
-    })
-
-  }
+  // getTipo(){
+  //   this.gasService.getTipo(this.tipo).then((res) => {
+  //     this.arrGasolineras = res
+  //     console.log(this.arrGasolineras)
+      
+  //   })
+  // }
+ 
 
   activarLocalizacion() {
     if (navigator.geolocation) {
-     navigator.geolocation.getCurrentPosition(this.showPosition.bind(this), this.showError)   
+     navigator.geolocation.getCurrentPosition(this.showPosition.bind(this), this.showError) 
     }
   }
+
+  generarRuta(){}
 
   showPosition(position) {
     //console.log(position)
     this.latitud = position.coords.latitude
     this.longitud = position.coords.longitude
-    this.gasServive.getGasolinerasLocalizacion(this.latitud, this.longitud, parseInt(this.radio)).then((res) => {
+    this.gasService.getGasolinerasLocalizacion(this.latitud, this.longitud, parseInt(this.radio)).then((res) => {
       this.arrGasolineras = res
+      console.log(this.arrGasolineras)
       //console.log(this.arrGasolineras)
       this.loadMap(position)
     })
@@ -163,7 +169,6 @@ export class ZonaUsuariosComponent implements OnInit {
     this.router.navigate(['inicio'])
   }
 
-  
 
 
 }

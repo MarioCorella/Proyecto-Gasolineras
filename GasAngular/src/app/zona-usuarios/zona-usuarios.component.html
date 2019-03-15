@@ -20,7 +20,7 @@
       </div>
 
       <p>3º Selecciona tu tipo de combustible.</p>
-      <select (change)="getTipo()" [(ngModel)]="tipo" class="form-control col-3">
+      <select (change)="filtrarPrecio()" [(ngModel)]="tipo" class="form-control col-3">
         <option value="precio_biodiesel">Biodiesel</option>
         <option value="precio_bioetanol">Bioetanol</option>
         <option value="precio_gas_natural_comprimido">GNC</option>
@@ -86,7 +86,7 @@
             {{item.precio_nuevo_gasoleo_a}}
           </div>
         </div>
-        <a class="btn btn-primary">Go somewhere</a>
+        <a (click)="generateRoute(item.latitud, item.longitud)" class="btn btn-primary">Como llegar</a>
       </div>
     </div>
   </div>

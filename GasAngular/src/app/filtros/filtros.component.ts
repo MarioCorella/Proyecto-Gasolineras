@@ -62,7 +62,6 @@ export class FiltrosComponent implements OnInit {
     this.arrFiltrado =this.arrFiltrado.filter(item => {
       return item[this.tipo] != null
     })
-
     this.arrFiltrado = this.ordenar(this.arrFiltrado, this.tipo)
     console.log(this.arrFiltrado)
   }
@@ -74,6 +73,5 @@ export class FiltrosComponent implements OnInit {
     return  arrayOrdenado;
     //console.log(arrayOrdenado)
   }
-   
 }
 
