@@ -7,19 +7,20 @@
 
     <ul class="col-7 nav justify-content-end">
       <li class="nav-item">
-        <a class="nav-link active" [routerLink]="['/inicio']" [routerLinkActive]="'activa'">Inicio</a>
+        <a class="nav-link active" [routerLink]="['/inicio']" [routerLinkActive]="'active'">Inicio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" [routerLink]="['/filtros']" [routerLinkActive]="'activa'">Buscador</a>
+        <a class="nav-link active" [routerLink]="['/filtros']" [routerLinkActive]="'active'">Buscador</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" [routerLink]="['/ranking']" [routerLinkActive]="'activa'">Ranking</a>
+        <a class="nav-link active" [routerLink]="['/ranking']" [routerLinkActive]="'active'">Ranking</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" [routerLink]="['/login']" [routerLinkActive]="'activa'">Login</a>
+        <a class="nav-link active" [routerLink]="['/login']" [routerLinkActive]="'active'">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Zona Usuarios</a>
+        <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Zona Usuarios</a> -->
+        <a [ngClass]="{'nav-link': true, 'disabled':!gasService.estadoLogin()}" [routerLink]="['/zona_usuarios']" [routerLinkActive]="'active'">Zona Usuarios</a>
       </li>
 
     </ul>

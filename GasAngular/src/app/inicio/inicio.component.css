@@ -23,6 +23,9 @@ span{
 hr{
     background-color:#293f56;
 }
+.container{
+    display: hidden;
+}
     
 
 
