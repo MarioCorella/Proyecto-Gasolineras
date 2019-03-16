@@ -1,0 +1,25 @@
+.titulo{
+    text-align: center;
+}
+.container-gas{
+    width: 80%;
+    margin: 0 auto;
+}
+.box-gas{
+    background-color: #87c0cd;
+    border: 1px solid #226597;
+    border-radius: 5px;
+}
+.box-gas p{
+    border: 1px solid #226597;
+    border-radius: 5px;
+    line-height: 25px;
+    padding: 5px;
+}
+.box-gas h4{
+    padding: 10px;
+    background-color: #293f56;
+    color: white;
+    margin-top: 10px;
+    border-radius: 5px;
+}

@@ -1,6 +1,7 @@
-<div class="container">
-    <h3>Bienvenido a la zona de Registro</h3>
-    <p>Intoduce tus datos</p>
+
+    <h2 class="titulo">Bienvenido a la zona de Registro</h2>
+    <div class="col-6 offset-3">
+    <p class="titulo mt-3">Intoduce tus datos</p>
 
     <h2>{{aviso}}</h2>
   
@@ -27,9 +28,11 @@
           <p *ngIf="formRegistro.controls['password'].errors?.pattern && formRegistro.controls['password'].dirty">El campo debe ser una contraseña correcta</p>
         </div>
   
-        <button type="submit" [ngClass]="{'button-disable': formRegistro.invalid}" [disabled]="formRegistro.invalid"  class="btn btn-primary mb-3">Enviar</button>
+        <button type="submit" [ngClass]="{'button-disable': formRegistro.invalid}" [disabled]="formRegistro.invalid"  class="btn btn-primary boton col-2 offset-5 mb-3 mt-3">Enviar</button>
 
         
     </form>
-</div>
+
+  </div>
+
   

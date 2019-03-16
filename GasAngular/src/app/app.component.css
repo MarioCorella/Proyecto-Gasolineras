@@ -1,15 +1,19 @@
 .container-fluid{
-    background-color: #dd7600;
+    background-color: #1b89ac;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
     font-family: 'Roboto Slab', serif;
     font-size: 18px;
+    box-sizing: border-box;
+}
+hr{
+    background-color:#293f56;
 }
 h1{
     font-size: 65px;
     font-weight: bolder;
-    color: #018790;
+    color: #293f56;
 }
 header {
     text-align: center;
@@ -22,11 +26,12 @@ header a{
     text-align: center;
     border: 2px solid #174144;;
     border-radius: 35px;
-    background-color: #018790;
+    background-color: #87c0cd;
     color: black;
 }
 header a:hover{
     color:white;
+    background-color: #293f56;
     transition: 350ms;
 }
 nav{

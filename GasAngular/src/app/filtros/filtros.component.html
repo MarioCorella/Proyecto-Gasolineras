@@ -1,67 +1,88 @@
 <div container>
 
-  <h2>Encuentra el precio más bajo para tu combustible</h2>
+  <h2 class="tit-filtro">Encuentra el precio más bajo para tu combustible</h2>
+
+  <hr>
 
   <form novalidate [formGroup]="formSelect" class="form-group" (ngSubmit)="recogerFiltros()">
-    <div class="row">
+    <div class="row mt-5">
 
-      <div class="col-5">
-        <p>Selecciona tu provincia</p>
+      <div class="col-3 offset-3">
+        <p class="tit-filtro mt-1">Selecciona tu provincia</p>
         <select name="provincia" class="form-control " formControlName="provincia" (change)="handleProvincia()">
           <option *ngFor="let prov of provincias">{{prov.provincia}}</option>
         </select>
 
       </div>
-      <div class="col-5">
-        <p>Selecciona tu localidad</p>
+
+      <div class="col-3">
+        <p class="tit-filtro mt-1">Selecciona tu localidad</p>
         <select name="municipios" class="form-control" formControlName="municipio">
           <option *ngFor="let item of municipios">{{item.municipio}}</option>
         </select>
       </div>
+
     </div>
 
-    <div class="row">
-      <button class="btn btn-primary offset-4 col-2 mt-5">Buscar</button>
-    </div>
+    <button class="btn btn-primary boton mt-5 offset-5 col-2">Buscar</button>
+
   </form>
 
 
+  <h3 class="tit-filtro mb-2">Para ordenar por precio selecciona tu combustible</h3>
 
+  <div class="row mb-5">
+    <div class="col-4 offset-4">
+      <select (change)="filtrarPrecio()" [(ngModel)]="tipo" class="form-control col-4 offset-4">
+        <option value="precio_biodiesel">Biodiesel</option>
+        <option value="precio_bioetanol">Bioetanol</option>
+        <option value="precio_gas_natural_comprimido">GNC</option>
+        <option value="precio_gas_natural_licuado">Gas natural licuado</option>
+        <option value="precio_gases_licuados_petroleo">GLP</option>
+        <option value="precio_gasoleo_a">Gasoleo_A</option>
+        <option value="precio_gasoleo_b">Gasoleo_B</option>
+        <option value="precio_gasolina_95_proteccion">Gasolina_95_ Protección</option>
+        <option value="precio_gasolina_98">Gasolina_98</option>
+        <option value="precio_nuevo_gasoleo-a">Nuevo_Gasoleo_A</option>
+      </select>
+    </div>
+
+  </div>
 
   
-    <h3 >Ordena por precio</h3>
-    <p>Selecciona tu combustible</p>
-    <select (change)="filtrarPrecio()" [(ngModel)]="tipo" class="form-control col-3">
-      <option value="precio_biodiesel">Biodiesel</option>
-      <option value="precio_bioetanol">Bioetanol</option>
-      <option value="precio_gas_natural_comprimido">GNC</option>
-      <option value="precio_gas_natural_licuado">Gas natural licuado</option>
-      <option value="precio_gases_licuados_petroleo">GLP</option>
-      <option value="precio_gasoleo_a">Gasoleo_A</option>
-      <option value="precio_gasoleo_b">Gasoleo_B</option>
-      <option value="precio_gasolina_95_proteccion">Gasolina_95_ Protección</option>
-      <option value="precio_gasolina_98">Gasolina_98</option>
-      <option value="precio_nuevo_gasoleo-a">Nuevo_Gasoleo_A</option>
-    </select>
-   
+    <div class="row container-gas">
+      <div *ngFor="let item of arrFiltrado" class="box-gas col-4">
+        <h4> {{item.rotulo}}</h4>
+        <h5>Provincia: {{item.provincia}}</h5>
+        <h6>Dirección: {{item.direccion}}</h6>
+        <p *ngIf="item.precio_biodiesel"> Precio biodiesel = {{item.precio_biodiesel}} €</p>
+        <p *ngIf="item.precio_bioetanol"> Precio bioetanol = {{item.precio_bioetanol}} € </p>
+        <p *ngIf="item.precio_gas_natural_comprimido"> Precio GNC = {{item.precio_gas_natural_comprimido}} € </p>
+        <p *ngIf="item.precio_gas_natural_licuado">Precio GNL = {{item.precio_gas_natural_licuado}} € </p>
+        <p *ngIf="item.precio_gases_licuados_petroleo">Precio GLP = {{item.precio_gases_licuados_petroleo}} € </p>
+        <p *ngIf="item.precio_gasoleo_a"> Precio gasoleo-A = {{item.precio_gasoleo_a}} € </p>
+        <p *ngIf="item.precio_gasoleo_b"> Precio gasoleo-B = {{item.precio_gasoleo_b}} € </p>
+        <p *ngIf="item.precio_gasolina_95_proteccion"> Precio gasolina-95 = {{item.precio_gasolina_95_proteccion}} € </p>
+        <p *ngIf="item.precio_gasolina_98"> Precio gasolina-98 = {{item.precio_gasolina_98}} € </p>
+        <p *ngIf="item.precio_nuevo_gasoleo_a"> Precio nuevo gasoleo-A = {{item.precio_nuevo_gasoleo_a}} € </p>
+      </div>
+    </div>
+ 
 
 
-
-
-
-  <div class="row">
-    <div *ngFor="let item of arrFiltrado" class="card col-4">
+  <!-- <div class="row">
+    <div *ngFor="let item of arrFiltrado" class="card col-4 card-gas">
       <div class="card-header">
         {{item.rotulo}}
       </div>
       <div class="card-body">
-        <h5 class="card-title">{{item.direccion}}</h5>
-        <p>{{item.provincia}}</p>
-        <p class="card-text"></p>
+        <h5 class="card-title">Provincia: {{item.provincia}}</h5>
+
+        <p class="card-text">Dirección: {{item.direccion}}</p>
 
         <div class="list-group">
           <div class="list-group-item" *ngIf="item.precio_biodiesel">
-             Precio biodiesel: {{item.precio_biodiesel}}
+            Precio biodiesel: {{item.precio_biodiesel}}
           </div>
           <div class="list-group-item" *ngIf="item.precio_bioetanol">
             Precio bioetanol: {{item.precio_bioetanol}}
@@ -74,7 +95,7 @@
             Precio GNL:
             {{item.precio_gas_natural_licuado}}
           </div>
-          <div class="list-group-item" *ngIf="item.precio_gases_licuados_petroleo"> 
+          <div class="list-group-item" *ngIf="item.precio_gases_licuados_petroleo">
             Precio GLP:
             {{item.precio_gases_licuados_petroleo}}
           </div>
@@ -96,11 +117,16 @@
             {{item.precio_nuevo_gasoleo_a}}
           </div>
         </div>
-        <!-- <a class="btn btn-primary">Go somewhere</a> -->
+    
       </div>
     </div>
-  </div>
-  <div *ngIf="biodiesel"> precio biodiesel: {{biodiesel}}</div>
+  </div> -->
+
+
+
+
+
+  <!-- <div *ngIf="biodiesel"> precio biodiesel: {{biodiesel}}</div>
   <div *ngIf="bioetanol"> precio bioetanol: {{bioetanol}}</div>
   <div *ngIf="gnc"> precio GNC: {{gnc}}</div>
   <div *ngIf="gnl"> precio GNL: {{gnl}}</div>
@@ -109,29 +135,7 @@
   <div *ngIf="gasoleo_b"> precio gasoleo-B: {{gasoleo_b}}</div>
   <div *ngIf="gasolina_95"> precio gasolina-95: {{gasolina_95}}</div>
   <div *ngIf="gasolina_98"> precio gasolina-98: {{gasolina_98}}</div>
-  <div *ngIf="nuevo_gasoleo_a"> precio nuevo gasoleo-A: {{nuevo_gasoleo_a}}</div>
+  <div *ngIf="nuevo_gasoleo_a"> precio nuevo gasoleo-A: {{nuevo_gasoleo_a}}</div> -->
 
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

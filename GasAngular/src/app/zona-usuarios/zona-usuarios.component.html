@@ -1,27 +1,32 @@
-<div class="container">
-  <div class="row">
-    <h4 class="mb-5 col-11">Hola {{nombreUsuario}} !!! Para poder mostrarte las gasolineras más próximas a tu posición sigue los siguientes pasos:</h4>
-    <button (click)="editarUsuario()" class="btn btn-primary col-1">Edita tu prefil</button>
-    <button (click)="logOut()" class="btn btn-primary col-1">Salir</button>
-  </div>
+
+  <div class="col-10 offset-1">
+      <div class="row">
+          <button (click)="editarUsuario()" class="btn btn-primary offset-9 col-2 boton">Edita tu perfil</button>
+          <button (click)="logOut()" class="btn btn-primary col-1 boton">Salir</button>
+        </div>
+    <h2 class="titulo mb-5">Hola {{nombreUsuario}} !!!</h2>
+    
+    <h5 class="mb-5"> Para poder mostrarte las gasolineras más próximas a tu posición sigue los siguientes pasos:</h5>
+    
+ 
   <div class="row">
 
     <div class="col-6">
       <p>1º Pulsa el botón localización para poder acceder a tu posición.</p>
 
-      <button (click)="activarLocalizacion()" class="btn btn-outline-primary col-3 offset-4">Localización</button>
+      <button (click)="activarLocalizacion()" class="btn btn-outline-primary boton col-3 offset-4 mb-3">Localización</button>
 
       <p>2º Introduce un radio en metros para limitar la busqueda.</p>
       <div class="input-group col-6 offset-3">
-        <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2"
+        <input type="text" class="form-control boton" aria-label="Recipient's username" aria-describedby="button-addon2"
           [(ngModel)]="ngRadio">
         <div class="input-group-append">
-          <button (click)="cambiarRadio()" class="btn btn-outline-primary" type="button">Radio</button>
+          <button (click)="cambiarRadio()" class="btn btn-outline-primary boton mb-3" type="button">Radio</button>
         </div>
       </div>
 
-      <p>3º Selecciona tu tipo de combustible.</p>
-      <select (change)="filtrarPrecio()" [(ngModel)]="tipo" class="form-control col-3">
+      <p>3º Selecciona tu tipo de combustible para ordenarlo por precio.</p>
+      <select (change)="filtrarPrecio()" [(ngModel)]="tipo" class="form-control boton offset-3 col-5">
         <option value="precio_biodiesel">Biodiesel</option>
         <option value="precio_bioetanol">Bioetanol</option>
         <option value="precio_gas_natural_comprimido">GNC</option>
@@ -34,8 +39,9 @@
         <option value="precio_nuevo_gasoleo-a">Nuevo_Gasoleo_A</option>
       </select>
 
-
     </div>
+
+
     <div #googleMap style="width: 500px; height: 400px" class="col-6"></div>
   </div>
 
@@ -102,6 +108,6 @@
   <div *ngIf="gasolina_98"> precio gasolina-98: {{gasolina_98}}</div>
   <div *ngIf="nuevo_gasoleo_a"> precio nuevo gasoleo-A: {{nuevo_gasoleo_a}}</div>
 
-
 </div>
+
 

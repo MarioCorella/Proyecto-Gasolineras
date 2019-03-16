@@ -2,7 +2,27 @@
     width: 100%;
     height: auto;
 }
-.grafico h5{
-    text-align: center;
-    
+ h5{
+    text-align: center; 
+    margin-bottom: 15px;
 }
+.home-text{
+    margin: auto;
+}
+.tit-acord{
+    font-weight: 400;
+    text-decoration: underline;
+    color: black;
+}
+span{
+    font-size: 10px;
+}
+.consejos{
+    background-color: #87c0cd !important;
+}
+hr{
+    background-color:#293f56;
+}
+    
+
+

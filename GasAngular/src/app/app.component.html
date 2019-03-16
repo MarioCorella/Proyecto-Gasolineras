@@ -1,13 +1,11 @@
-
-
 <div class="container-fluid">
 
 
   <header class="row">
-   
-    <h1 class="titulo col-4">GasoFy</h1>
 
-    <ul class="col-8 nav justify-content-end">
+    <h1 class="titulo col-4">Ga$oFy</h1>
+
+    <ul class="col-7 nav justify-content-end">
       <li class="nav-item">
         <a class="nav-link active" [routerLink]="['/inicio']" [routerLinkActive]="'activa'">Inicio</a>
       </li>
@@ -25,16 +23,19 @@
       </li>
 
     </ul>
-   
+
   </header>
 
- 
+    <hr>
+
   <router-outlet></router-outlet>
- 
+  <hr>
   <footer class="mt-5">
-    <h6>Fuente: Datos del Ministerio para la Transición Ecológica.</h6>
-    <p>La información publicada en este sitio web tiene únicamente carácter informativo y no constituye una
-      comunicación de actos administrativos ni comunicados oficiales.</p>
+    <div class="col-10 offset-1">
+      <h6>Fuente: Datos del Ministerio para la Transición Ecológica.</h6>
+      <p>La información publicada en este sitio web tiene únicamente carácter informativo y no constituye una
+        comunicación de actos administrativos ni comunicados oficiales.</p>
+    </div>
   </footer>
 </div>
 
