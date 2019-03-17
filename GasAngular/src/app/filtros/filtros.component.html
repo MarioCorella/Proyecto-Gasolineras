@@ -8,8 +8,8 @@
     <div class="row mt-5">
 
       <div class="col-3 offset-3">
-        <p class="tit-filtro mt-1">Selecciona tu provincia</p>
-        <select name="provincia" class="form-control " formControlName="provincia" (change)="handleProvincia()">
+        <p class="tit-filtro mt-1 ">Selecciona tu provincia</p>
+        <select name="provincia" class="form-control boton" formControlName="provincia" (change)="handleProvincia()">
           <option *ngFor="let prov of provincias">{{prov.provincia}}</option>
         </select>
 
@@ -17,7 +17,7 @@
 
       <div class="col-3">
         <p class="tit-filtro mt-1">Selecciona tu localidad</p>
-        <select name="municipios" class="form-control" formControlName="municipio">
+        <select name="municipios" class="form-control boton" formControlName="municipio">
           <option *ngFor="let item of municipios">{{item.municipio}}</option>
         </select>
       </div>
@@ -33,7 +33,7 @@
 
   <div class="row mb-5">
     <div class="col-4 offset-4">
-      <select (change)="filtrarPrecio()" [(ngModel)]="tipo" class="form-control col-4 offset-4">
+      <select (change)="filtrarPrecio()" [(ngModel)]="tipo" class="form-control col-4 offset-4 boton">
         <option value="precio_biodiesel">Biodiesel</option>
         <option value="precio_bioetanol">Bioetanol</option>
         <option value="precio_gas_natural_comprimido">GNC</option>
