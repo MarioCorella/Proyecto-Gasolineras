@@ -42,11 +42,65 @@
     </div>
 
 
-    <div #googleMap style="width: 500px; height: 400px" class="col-6"></div>
+    <div #googleMap style="width: 500px; height: 400px" class="col-6 mb-5"></div>
   </div>
 
+
+
+
+
+  <div class="row container-gas">
+    <div *ngFor="let item of arrFiltrado" class="box-gas col-4">
+      <h4> {{item.rotulo}}</h4>
+      <h5>Provincia: {{item.provincia}}</h5>
+      <h6>Dirección: {{item.direccion}}</h6>
+      <p *ngIf="item.precio_biodiesel"> Precio biodiesel = {{item.precio_biodiesel}} €</p>
+      <p *ngIf="item.precio_bioetanol"> Precio bioetanol = {{item.precio_bioetanol}} € </p>
+      <p *ngIf="item.precio_gas_natural_comprimido"> Precio GNC = {{item.precio_gas_natural_comprimido}} € </p>
+      <p *ngIf="item.precio_gas_natural_licuado">Precio GNL = {{item.precio_gas_natural_licuado}} € </p>
+      <p *ngIf="item.precio_gases_licuados_petroleo">Precio GLP = {{item.precio_gases_licuados_petroleo}} € </p>
+      <p *ngIf="item.precio_gasoleo_a"> Precio gasoleo-A = {{item.precio_gasoleo_a}} € </p>
+      <p *ngIf="item.precio_gasoleo_b"> Precio gasoleo-B = {{item.precio_gasoleo_b}} € </p>
+      <p *ngIf="item.precio_gasolina_95_proteccion"> Precio gasolina-95 = {{item.precio_gasolina_95_proteccion}} € </p>
+      <p *ngIf="item.precio_gasolina_98"> Precio gasolina-98 = {{item.precio_gasolina_98}} € </p>
+      <p *ngIf="item.precio_nuevo_gasoleo_a"> Precio nuevo gasoleo-A = {{item.precio_nuevo_gasoleo_a}} € </p>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
-  <div class="row">
+  <!-- <div class="row">
     <div *ngFor="let item of arrFiltrado" class="card col-4">
       <div class="card-header">
         {{item.rotulo}}
@@ -106,7 +160,7 @@
   <div *ngIf="gasoleo_b"> precio gasoleo-B: {{gasoleo_b}}</div>
   <div *ngIf="gasolina_95"> precio gasolina-95: {{gasolina_95}}</div>
   <div *ngIf="gasolina_98"> precio gasolina-98: {{gasolina_98}}</div>
-  <div *ngIf="nuevo_gasoleo_a"> precio nuevo gasoleo-A: {{nuevo_gasoleo_a}}</div>
+  <div *ngIf="nuevo_gasoleo_a"> precio nuevo gasoleo-A: {{nuevo_gasoleo_a}}</div> -->
 
 </div>
 
