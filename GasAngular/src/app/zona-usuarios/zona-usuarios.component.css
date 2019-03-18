@@ -32,3 +32,14 @@
     width: 80%;
     margin: 0 auto;
 }
+.iconOK{
+    color: red;
+    cursor: pointer;
+}
+
+.iconKO{
+    cursor: pointer;
+    color: black;
+}
+
+

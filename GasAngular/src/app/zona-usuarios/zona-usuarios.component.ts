@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { GasService } from '../gas.service';
 import { Router } from '@angular/router';
 
+
 declare var google;
 
 @Component({
@@ -9,10 +10,11 @@ declare var google;
   templateUrl: './zona-usuarios.component.html',
   styleUrls: ['./zona-usuarios.component.css']
 })
-export class ZonaUsuariosComponent implements OnInit {
+export class ZonaUsuariosComponent implements OnInit{
+
+  
 
   @ViewChild('googleMap') gMap: any
-
   latitud: any
   longitud: any
   arrGasolineras: any[]
@@ -28,11 +30,13 @@ export class ZonaUsuariosComponent implements OnInit {
   arrFiltrado: any[]
   tokenUsuario: string
   nombreUsuario: string
+  mostrar: boolean
   
 
   constructor(private gasService: GasService, private router: Router) {
 
     this.radio = 5000
+   // this.mostrar = true
   }
 
   ngOnInit() {
@@ -75,15 +79,6 @@ export class ZonaUsuariosComponent implements OnInit {
     return  arrayOrdenado;
     //console.log(arrayOrdenado)
   }
- 
-
-  // getTipo(){
-  //   this.gasService.getTipo(this.tipo).then((res) => {
-  //     this.arrGasolineras = res
-  //     console.log(this.arrGasolineras)
-      
-  //   })
-  // }
  
 
   activarLocalizacion() {
@@ -177,7 +172,19 @@ export class ZonaUsuariosComponent implements OnInit {
     localStorage.removeItem('Token')
     this.router.navigate(['inicio'])
   }
+  
+  addFavorite(ideess){
+    this.mostrar = !this.mostrar
+    this.gasService.addGasFavorite(ideess, this.tokenUsuario).then((result) => {
+    console.log(result)
+   })
+  }
 
+  handleFavoritos(){
+    this.gasService.getFavoritos(this.tokenUsuario).then((result) => {
+      console.log(result)
+    })
+  }
 
 
 }

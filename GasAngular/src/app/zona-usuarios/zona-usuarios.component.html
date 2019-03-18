@@ -1,14 +1,16 @@
+<div class="col-10 offset-1">
+  <div class="row">
+    <button (click)="editarUsuario()" class="btn btn-primary offset-9 col-2 boton">Edita tu perfil</button>
+    <button (click)="logOut()" class="btn btn-primary col-1 boton">Salir</button>
+  </div>
+  <div class="row">
+    <button (click)="handleFavoritos() "class="btn btn-primary col-3 offset-9 boton">Mis Favoritos</button>
+  </div>
+  <h2 class="titulo mb-5">Hola {{nombreUsuario}} !!!</h2>
 
-  <div class="col-10 offset-1">
-      <div class="row">
-          <button (click)="editarUsuario()" class="btn btn-primary offset-9 col-2 boton">Edita tu perfil</button>
-          <button (click)="logOut()" class="btn btn-primary col-1 boton">Salir</button>
-        </div>
-    <h2 class="titulo mb-5">Hola {{nombreUsuario}} !!!</h2>
-    
-    <h5 class="mb-5"> Para poder mostrarte las gasolineras más próximas a tu posición sigue los siguientes pasos:</h5>
-    
- 
+  <h5 class="mb-5"> Para poder mostrarte las gasolineras más próximas a tu posición sigue los siguientes pasos:</h5>
+
+
   <div class="row">
 
     <div class="col-6">
@@ -51,7 +53,15 @@
 
   <div class="row container-gas">
     <div *ngFor="let item of arrFiltrado" class="box-gas col-4">
-      <h4> {{item.rotulo}}</h4>
+      <div class="row">
+        <div class="col-10">
+          <h4> {{item.rotulo}} </h4>
+        </div>
+        <div (click)="addFavorite(item.ideess)" class="col-2">
+            <a title="Añadir a favoritos" *ngIf="mostrar" ><i class="far fa-star" [ngClass]="{'iconOK':true}"></i></a> 
+            <a title="Eliminar de favoritos" *ngIf="!mostrar" ><i class="far fa-star" [ngClass]="{'iconKO':true}"></i></a> 
+        </div>
+      </div>
       <h5>Provincia: {{item.provincia}}</h5>
       <h6>Dirección: {{item.direccion}}</h6>
       <p *ngIf="item.precio_biodiesel"> Precio biodiesel = {{item.precio_biodiesel}} €</p>
@@ -64,6 +74,7 @@
       <p *ngIf="item.precio_gasolina_95_proteccion"> Precio gasolina-95 = {{item.precio_gasolina_95_proteccion}} € </p>
       <p *ngIf="item.precio_gasolina_98"> Precio gasolina-98 = {{item.precio_gasolina_98}} € </p>
       <p *ngIf="item.precio_nuevo_gasoleo_a"> Precio nuevo gasoleo-A = {{item.precio_nuevo_gasoleo_a}} € </p>
+      <a (click)="generateRoute(item.latitud, item.longitud)" class="btn btn-primary boton mb-2">Como llegar</a>
     </div>
   </div>
 
@@ -99,7 +110,7 @@
 
 
 
- 
+
   <!-- <div class="row">
     <div *ngFor="let item of arrFiltrado" class="card col-4">
       <div class="card-header">
@@ -163,5 +174,3 @@
   <div *ngIf="nuevo_gasoleo_a"> precio nuevo gasoleo-A: {{nuevo_gasoleo_a}}</div> -->
 
 </div>
-
-

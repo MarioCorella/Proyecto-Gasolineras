@@ -50,6 +50,21 @@ let getFiltrosUsers = (tipo) => {
 }
 
 
+let addGasFavorite = (ideess, token, done) => {
+    db.get().query('INSERT INTO `usuarios-gasolineras`(`id`, `fk-usuario`, `fk-gasolinera`) VALUES (null,(SELECT usuarios.id FROM usuarios WHERE token=?),?)',[token, ideess], (err, result) => {
+        if(err) return console.log(err)
+        done(null, result)
+    })
+}
+
+let getFavoritos = (token, done) => {
+    db.get().query('SELECT DISTINCT(ug.fkgasolinera), gs.* FROM usuarios-gasolineras ug, gas_station gs WHERE ug.fkgasolinera = gs.id AND fkusuario = (SELECT usuarios.id FROM usuarios WHERE token= ?)',[token], (err, result) => {
+        if(err) return console.log(err)
+        done(null, result)
+    })
+}
+
+
 
 module.exports = {
     getByIdProv: getByIdProv,
@@ -57,5 +72,7 @@ module.exports = {
     getMunicipios: getMunicipios,
     getGasolineras: getGasolineras,
     getRanking: getRanking,
-    getFiltrosUsers: getFiltrosUsers
+    getFiltrosUsers: getFiltrosUsers,
+    addGasFavorite: addGasFavorite,
+    getFavoritos: getFavoritos
 }

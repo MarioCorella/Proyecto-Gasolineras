@@ -20,7 +20,7 @@ router.post('/municipios', (req, res) => {
 
 /*http://localhost:3000/api/filtros */
 router.post('/', (req, res) => {
-  console.log(req.body)
+  //console.log(req.body)
   gasModel.getGasolineras(req.body.provincia, req.body.municipio, (err, rows) => {
     if(err) return console.log(err.message)
     res.json(rows)
@@ -70,4 +70,22 @@ router.post('/users', async (req, res) => {
   }
   res.json(resultado)
 })
+
+/* http://localhost:3000/api/filtros/favoritos/ */
+router.post('/favoritos', (req, res) => {
+   gasModel.addGasFavorite(req.body.ideess, req.body.token, (err, rows) =>{
+    if(err) return console.log(err.message)
+    res.json(rows)
+  })
+})
+
+/* http://localhost:3000/api/filtros/listaFav */
+router.post('/listaFav', (req, res) => {
+  gasModel.getFavoritos(req.body.token, (err, rows) => {
+    if(err) return console.log(err.message)
+    res.json(rows)
+  })
+})
+
+
 module.exports = router;

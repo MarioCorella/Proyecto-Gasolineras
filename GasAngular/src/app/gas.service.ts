@@ -21,12 +21,16 @@ export class GasService {
   urlRanking = "http://localhost:3000/api/filtros/ranking";
   urlUpdate = "http://localhost:3000/api/usuarios/update";
   urlFiltrosUsers = "http://localhost:3000/api/filtros/users";
+  urlFavoritos = "http://localhost:3000/api/filtros/favoritos/";
 
   constructor(private httpClient: HttpClient){}
 
   // comprobarRegistro(email){
   //   return this.httpClient.post<any[]>(`${this.urlAccess}`, {email: email}).toPromise()
   // }
+  addGasFavorite(ideess, token){
+    return this.httpClient.post<any[]>(`${this.urlFavoritos}`, {ideess: ideess, token: token}).toPromise()
+  }
 
   enviarDatosReg(userData){
     return this.httpClient.post<any>(`${this.urlReg}`, userData).toPromise()
@@ -83,6 +87,11 @@ export class GasService {
 
   getTipo(tipo){
     return this.httpClient.post<any[]>(`${this.urlFiltrosUsers}`, {tipo: tipo}).toPromise()
+  }
+
+  getFavoritos(token){
+    console.log(token)
+    return this.httpClient.post<any[]>(`${this.urlFiltros}/listaFav`,{token: token}).toPromise()
   }
  
 }
