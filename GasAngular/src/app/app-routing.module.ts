@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { ZonaUsuariosComponent } from './zona-usuarios/zona-usuarios.component';
 import { EditaUsuarioComponent } from './edita-usuario/edita-usuario.component';
 import { AccesoUsuarioGuard } from './acceso-usuario.guard';
+import { FavoritosComponent } from './favoritos/favoritos.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'zona_usuarios', component: ZonaUsuariosComponent, canActivate: [AccesoUsuarioGuard]},
   { path: 'edita-usuario', component: EditaUsuarioComponent},
+  { path: 'favoritos', component: FavoritosComponent},
   { path: '**', component: InicioComponent}
   
 ];

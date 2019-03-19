@@ -15,6 +15,7 @@ import { RegistroUsuariosComponent } from './registro-usuarios/registro-usuarios
 import { ZonaUsuariosComponent } from './zona-usuarios/zona-usuarios.component';
 import { EditaUsuarioComponent } from './edita-usuario/edita-usuario.component';
 import { VistaRankingComponent } from './vista-ranking/vista-ranking.component';
+import { FavoritosComponent } from './favoritos/favoritos.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { VistaRankingComponent } from './vista-ranking/vista-ranking.component';
     RegistroUsuariosComponent,
     ZonaUsuariosComponent,
     EditaUsuarioComponent,
-    VistaRankingComponent
+    VistaRankingComponent,
+    FavoritosComponent
    
   ],
   imports: [

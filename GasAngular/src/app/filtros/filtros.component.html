@@ -54,6 +54,7 @@
       <div *ngFor="let item of arrFiltrado" class="box-gas col-4">
         <h4> {{item.rotulo}}</h4>
         <h5>Provincia: {{item.provincia}}</h5>
+        <h5>Municipio: {{item.municipio}}</h5>
         <h6>Dirección: {{item.direccion}}</h6>
         <p *ngIf="item.precio_biodiesel"> Precio biodiesel = {{item.precio_biodiesel}} €</p>
         <p *ngIf="item.precio_bioetanol"> Precio bioetanol = {{item.precio_bioetanol}} € </p>

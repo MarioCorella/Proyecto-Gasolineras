@@ -73,9 +73,18 @@ router.post('/users', async (req, res) => {
 
 /* http://localhost:3000/api/filtros/favoritos/ */
 router.post('/favoritos', (req, res) => {
-   gasModel.addGasFavorite(req.body.ideess, req.body.token, (err, rows) =>{
+  console.log(req.body)
+   gasModel.addGasFavorite(req.body.id, req.body.token, (err, rows) =>{
     if(err) return console.log(err.message)
-    res.json(rows)
+   console.log(rows)
+  })
+})
+
+/* http://localhost:3000/api/filtros/deleteFav */ 
+router.post('/deleteFav', (req, res) => {
+  gasModel.deleteFav(req.body.id, req.body.token, (err, result) => {
+    if(err) return console.log(err.message)
+   res.json(result)
   })
 })
 

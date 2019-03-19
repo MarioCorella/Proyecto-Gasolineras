@@ -9,5 +9,7 @@ import { GasService } from './gas.service';
 export class AppComponent {
   title = 'Gas';
   constructor(public gasService: GasService){}
+
+  
 }
 

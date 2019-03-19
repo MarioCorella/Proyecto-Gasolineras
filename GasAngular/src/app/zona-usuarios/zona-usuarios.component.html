@@ -4,12 +4,11 @@
     <button (click)="logOut()" class="btn btn-primary col-1 boton">Salir</button>
   </div>
   <div class="row">
-    <button (click)="handleFavoritos() "class="btn btn-primary col-3 offset-9 boton">Mis Favoritos</button>
+    <button (click)="handleFavoritos() " class="btn btn-primary col-3 offset-9 boton">Mis Favoritos</button>
   </div>
   <h2 class="titulo mb-5">Hola {{nombreUsuario}} !!!</h2>
 
   <h5 class="mb-5"> Para poder mostrarte las gasolineras más próximas a tu posición sigue los siguientes pasos:</h5>
-
 
   <div class="row">
 
@@ -43,13 +42,8 @@
 
     </div>
 
-
     <div #googleMap style="width: 500px; height: 400px" class="col-6 mb-5"></div>
   </div>
-
-
-
-
 
   <div class="row container-gas">
     <div *ngFor="let item of arrFiltrado" class="box-gas col-4">
@@ -57,12 +51,13 @@
         <div class="col-10">
           <h4> {{item.rotulo}} </h4>
         </div>
-        <div (click)="addFavorite(item.ideess)" class="col-2">
-            <a title="Añadir a favoritos" *ngIf="mostrar" ><i class="far fa-star" [ngClass]="{'iconOK':true}"></i></a> 
-            <a title="Eliminar de favoritos" *ngIf="!mostrar" ><i class="far fa-star" [ngClass]="{'iconKO':true}"></i></a> 
+        <div class="col-2">
+          <a (click)="addFavorite(item.id)" title="Agregar favorito" *ngIf="!item.favorito"><i class="iconKO far fa-star"></i></a>
+          <a (click)="deleteFavorite(item.id)" title="Eliminar favorito" *ngIf="item.favorito"><i class="iconOK far fa-star"></i></a>
         </div>
       </div>
       <h5>Provincia: {{item.provincia}}</h5>
+      <h5>Municipio: {{item.municipio}}</h5>
       <h6>Dirección: {{item.direccion}}</h6>
       <p *ngIf="item.precio_biodiesel"> Precio biodiesel = {{item.precio_biodiesel}} €</p>
       <p *ngIf="item.precio_bioetanol"> Precio bioetanol = {{item.precio_bioetanol}} € </p>

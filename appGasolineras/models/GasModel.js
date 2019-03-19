@@ -50,15 +50,24 @@ let getFiltrosUsers = (tipo) => {
 }
 
 
-let addGasFavorite = (ideess, token, done) => {
-    db.get().query('INSERT INTO `usuarios-gasolineras`(`id`, `fk-usuario`, `fk-gasolinera`) VALUES (null,(SELECT usuarios.id FROM usuarios WHERE token=?),?)',[token, ideess], (err, result) => {
+let addGasFavorite = (id, token, done) => {
+    console.log(id, token)
+    db.get().query('INSERT INTO `usuarios-gasolineras`(`id`, `fkusuario`, `fkgasolinera`) VALUES (null,(SELECT usuarios.id FROM usuarios WHERE token=?),?)',[token, id], (err, result) => {
         if(err) return console.log(err)
         done(null, result)
     })
 }
 
+let deleteFav = (id, token, done) => {
+    db.get().query('DELETE FROM `usuarios-gasolineras` WHERE fkgasolinera = ? AND fkusuario = (SELECT usuarios.id FROM usuarios WHERE token= ?)', [id, token], (err, result) => {
+        if(err) return console.log(err)
+        done(null, result)
+    })
+}
+
+
 let getFavoritos = (token, done) => {
-    db.get().query('SELECT DISTINCT(ug.fkgasolinera), gs.* FROM usuarios-gasolineras ug, gas_station gs WHERE ug.fkgasolinera = gs.id AND fkusuario = (SELECT usuarios.id FROM usuarios WHERE token= ?)',[token], (err, result) => {
+    db.get().query('SELECT DISTINCT(ug.fkgasolinera), gs.* FROM gasolineras.`usuarios-gasolineras` ug, gas_station gs WHERE ug.fkgasolinera = gs.id AND fkusuario = (SELECT usuarios.id FROM usuarios WHERE token= ?)',[token], (err, result) => {
         if(err) return console.log(err)
         done(null, result)
     })
@@ -74,5 +83,6 @@ module.exports = {
     getRanking: getRanking,
     getFiltrosUsers: getFiltrosUsers,
     addGasFavorite: addGasFavorite,
-    getFavoritos: getFavoritos
+    getFavoritos: getFavoritos,
+    deleteFav: deleteFav
 }

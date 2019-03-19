@@ -10,14 +10,15 @@ declare var google;
   templateUrl: './zona-usuarios.component.html',
   styleUrls: ['./zona-usuarios.component.css']
 })
-export class ZonaUsuariosComponent implements OnInit{
+export class ZonaUsuariosComponent implements OnInit {
 
-  
+
 
   @ViewChild('googleMap') gMap: any
   latitud: any
   longitud: any
-  arrGasolineras: any[]
+  arrGasolineras: any
+  arrFiltrado: any
   map: any
   directionsDisplay: any
   directionsService: any
@@ -27,26 +28,25 @@ export class ZonaUsuariosComponent implements OnInit{
   radio: any
   position: any
   tipo: string
-  arrFiltrado: any[]
   tokenUsuario: string
   nombreUsuario: string
   mostrar: boolean
-  
+
 
   constructor(private gasService: GasService, private router: Router) {
 
     this.radio = 5000
-   // this.mostrar = true
+    // this.mostrar = true
   }
 
   ngOnInit() {
     this.tokenUsuario = localStorage.getItem('Token')
     this.gasService.getUsuario(this.tokenUsuario).then((res) => {
       this.nombreUsuario = this.capitalizeFirstLetter(res['nombre'])
-      
+
     })
   }
-  
+
   capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
@@ -62,10 +62,10 @@ export class ZonaUsuariosComponent implements OnInit{
     })
   }
 
-  filtrarPrecio(){
+  filtrarPrecio() {
     this.arrFiltrado = [...this.arrGasolineras]
 
-    this.arrFiltrado =this.arrFiltrado.filter(item => {
+    this.arrFiltrado = this.arrFiltrado.filter(item => {
       return item[this.tipo] != null
     })
     this.arrFiltrado = this.ordenar(this.arrFiltrado, this.tipo)
@@ -74,20 +74,17 @@ export class ZonaUsuariosComponent implements OnInit{
 
   ordenar(array, clave) {
     let arrayOrdenado = array.sort(function (a, b) {
-       return a[clave] > b[clave]  
+      return a[clave] > b[clave]
     })
-    return  arrayOrdenado;
-    //console.log(arrayOrdenado)
+    return arrayOrdenado;
+
   }
- 
 
   activarLocalizacion() {
     if (navigator.geolocation) {
-     navigator.geolocation.getCurrentPosition(this.showPosition.bind(this), this.showError) 
+      navigator.geolocation.getCurrentPosition(this.showPosition.bind(this), this.showError)
     }
   }
-
-  generarRuta(){}
 
   showPosition(position) {
     //console.log(position)
@@ -96,13 +93,12 @@ export class ZonaUsuariosComponent implements OnInit{
     this.gasService.getGasolinerasLocalizacion(this.latitud, this.longitud, parseInt(this.radio)).then((res) => {
       this.arrGasolineras = res
       console.log(this.arrGasolineras)
-      //console.log(this.arrGasolineras)
       this.loadMap(position)
     })
   }
 
   showError(error) {
-    console.log(error.code)
+    //console.log(error.code)
     switch (error.code) {
       case error.PERMISSION_DENIED:
         console.log('El usuario no quiere ser geolocalizado')
@@ -168,22 +164,33 @@ export class ZonaUsuariosComponent implements OnInit{
     this.router.navigate(['/edita-usuario'])
   }
 
-  logOut(){
+  logOut() {
     localStorage.removeItem('Token')
     this.router.navigate(['inicio'])
   }
-  
-  addFavorite(ideess){
-    this.mostrar = !this.mostrar
-    this.gasService.addGasFavorite(ideess, this.tokenUsuario).then((result) => {
-    console.log(result)
-   })
+
+  addFavorite(id) {
+    console.log('AGREGA', id)
+    this.gasService.addGasFavorite(id, this.tokenUsuario).then(() => {
+      this.gasService.getGasolinerasLocalizacion(this.latitud, this.longitud, parseInt(this.radio)).then((res) => {
+        this.arrGasolineras = res//array por ubicación y radio
+        this.arrFiltrado = res
+      })
+    })
   }
 
-  handleFavoritos(){
-    this.gasService.getFavoritos(this.tokenUsuario).then((result) => {
-      console.log(result)
+  deleteFavorite(id) {
+    console.log('DELETE', id)
+    this.gasService.deleteFavorite(id, localStorage.getItem('Token')).then(() => {
+      this.gasService.getGasolinerasLocalizacion(this.latitud, this.longitud, parseInt(this.radio)).then((res) => {
+        this.arrGasolineras = res//array por ubicación y radio
+        this.arrFiltrado = res
+      })
     })
+  }
+
+  handleFavoritos() {
+    this.router.navigate(['/favoritos'])
   }
 
 

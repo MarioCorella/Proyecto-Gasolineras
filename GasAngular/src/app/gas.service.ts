@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,14 +23,19 @@ export class GasService {
   urlUpdate = "http://localhost:3000/api/usuarios/update";
   urlFiltrosUsers = "http://localhost:3000/api/filtros/users";
   urlFavoritos = "http://localhost:3000/api/filtros/favoritos/";
+  urlDeleteFav = "http://localhost:3000/api/filtros/deleteFav";
 
   constructor(private httpClient: HttpClient){}
 
   // comprobarRegistro(email){
   //   return this.httpClient.post<any[]>(`${this.urlAccess}`, {email: email}).toPromise()
   // }
-  addGasFavorite(ideess, token){
-    return this.httpClient.post<any[]>(`${this.urlFavoritos}`, {ideess: ideess, token: token}).toPromise()
+  addGasFavorite(id, token){
+    return this.httpClient.post<any[]>(`${this.urlFavoritos}`, {id: id, token: token}).toPromise()
+  }
+
+  deleteFavorite(id, token){
+    return this.httpClient.post<any[]>(`${this.urlDeleteFav}`, {id: id, token: token}).toPromise()
   }
 
   enviarDatosReg(userData){
@@ -40,8 +46,25 @@ export class GasService {
     return this.httpClient.post<any[]>(`${this.urlLogin}`, loginData).toPromise()
   }
 
-  getGasolinerasLocalizacion(lat, long, radio){
-    return this.httpClient.get<any[]>(`https://gasextractor.herokuapp.com/api/station/${lat}/${long}/${radio}`).toPromise()
+  async getGasolinerasLocalizacion(lat, long, radio){
+
+    let arrGas = await this.httpClient.get<any[]>(`https://gasextractor.herokuapp.com/api/station/${lat}/${long}/${radio}`).toPromise()
+
+    let arrFavs = await this.getFavoritos(localStorage.getItem('Token'))
+
+    let arrFinal = arrGas.map(item => {
+      
+      let incluido = arrFavs.find((gasSt) => item.id === gasSt.id)
+
+      if(incluido){
+        item.favorito = true
+      }
+      return item
+    })
+
+    return new Promise((resolve, reject) => {
+      resolve(arrFinal)
+    })
   }
 
   getFiltros(provincia, municipio){

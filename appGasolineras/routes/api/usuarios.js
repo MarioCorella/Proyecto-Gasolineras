@@ -29,10 +29,10 @@ router.post('/create', (req, res) => {
 
 /* http://localhost:3000/api/usuarios/edit */
 router.post('/edit', (req, res) => {
-  console.log(req.body)
+  //console.log(req.body)
    usuarioModel.edit(req.body.token, (err, result) => {
      if (err) return console.log(err.message)
-     console.log(result)
+    // console.log(result)
      res.json(result[0])
    })
 })
