@@ -1,8 +1,4 @@
-.container-fluid{
-    background-color: #1b89ac;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
+*{
     font-family: 'Roboto Slab', serif;
     font-size: 18px;
     box-sizing: border-box;
@@ -17,49 +13,52 @@ h1{
 }
 header {
     text-align: center;
-    font-weight: bold;
-    padding: 50px;
 }
 
 header a{
+    text-transform: uppercase;
     margin-left: 10px;
     text-align: center;
-    border: 2px solid #174144;;
-    border-radius: 35px;
-    background-color: #87c0cd;
-    color: black;
+    color: white;
+    height: 70px;
 }
 header a:hover{
+    height:70px;
     color:white;
-    background-color: #293f56;
+    color:  #293f56;
+    border-bottom: 7px solid #293f56;
     transition: 350ms;
 }
-nav{
-  
-    width: 20%;
-    height: 500px;
-}
-nav a{
-    border-bottom: 1px solid rgb(32, 10, 10);
-    text-align: center;
-    color: black;
-    height: 33%;
-    padding-top: 55px;
-    font-size: 1.5rem;
-}
-nav a:hover{
-    background-color: grey;
-}
+
 header .activa{
     font-size: 20px;
     font-weight: bolder;
     
 }
-footer{
-  
+footer{   
+    color: white;
+    padding: 20px; 
+    background-color: #1b89ac;
     border-bottom: 1px solid black;
     text-align: center;
 }
+
+header .menu{
+    padding-top: 20px;
+}
+
+header{
+    border-bottom: 1px solid #293f56;
+    margin-bottom: 30px;
+    background-color: #1b89ac;
+}
+
+header .logo{
+    width: 110px;
+    height: auto;
+}
+
+
 
 
 

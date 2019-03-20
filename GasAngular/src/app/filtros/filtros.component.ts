@@ -71,7 +71,6 @@ export class FiltrosComponent implements OnInit {
        return a[clave] > b[clave]  
     })
     return  arrayOrdenado;
-    //console.log(arrayOrdenado)
   }
 }
 

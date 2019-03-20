@@ -17,15 +17,27 @@
 span{
     font-size: 10px;
 }
-.consejos{
-    background-color: #87c0cd !important;
-}
+
 hr{
     background-color:#293f56;
 }
 .container{
     display: hidden;
 }
+.consejos .card-header{
+    background-color: #87c0cd;
+   
+}
+
+.consejos .tit-acord{
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.consejos .card-body{
+    background-color: #eee;
+}
+
     
 
 

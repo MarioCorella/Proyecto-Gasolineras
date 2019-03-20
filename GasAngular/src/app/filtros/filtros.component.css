@@ -20,21 +20,11 @@
     background-color: #293f56;
     color: white;
     margin-top: 20px;
-    border-radius: 5px;
-    
+    border-radius: 5px;  
 }
 .container-gas{
     width: 80%;
     margin: 0 auto;
-}
-.boton{
-    background-color: #87c0cd;
-    border: 1px solid #226597;
-    color: white;
-}
-.boton:hover{
-    background-color: #293f56;
-    transition: 300ms;
 }
 hr{
     background-color:#293f56;

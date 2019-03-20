@@ -1,12 +1,4 @@
-.boton{
-    background-color: #87c0cd;
-    border: 1px solid #226597;
-    color: white;
-}
-.boton:hover{
-    background-color: #293f56;
-    transition: 300ms;
-}
+
 .titulo{
     text-align: center;
 }
