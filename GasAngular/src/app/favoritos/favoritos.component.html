@@ -1,11 +1,13 @@
+<h2 class="tit-filtro">Favoritos</h2>
 <div class="row container-gas">
+
   <div *ngFor="let item of arrFavoritos" class="box-gas col-4">
     <div class="row">
       <div class="col-10">
         <h4> {{item.rotulo}} </h4>
       </div>
-      <div  class="col-2">
-          <a (click)="deleteFavorite(item.id)" title="Eliminar favorito"><i class=" mt-3 iconOK fas fa-gas-pump" ></i></a> 
+      <div class="col-2">
+        <a (click)="deleteFavorite(item.id)" title="Eliminar favorito"><i class=" mt-3 iconOK fas fa-gas-pump"></i></a>
       </div>
     </div>
     <h5>Provincia: {{item.provincia}}</h5>
@@ -21,6 +23,5 @@
     <p *ngIf="item.precio_gasolina_95_proteccion"> Precio gasolina-95 = {{item.precio_gasolina_95_proteccion}} € </p>
     <p *ngIf="item.precio_gasolina_98"> Precio gasolina-98 = {{item.precio_gasolina_98}} € </p>
     <p *ngIf="item.precio_nuevo_gasoleo_a"> Precio nuevo gasoleo-A = {{item.precio_nuevo_gasoleo_a}} € </p>
-    <!-- <a (click)="generateRoute(item.latitud, item.longitud)" class="btn btn-primary boton mb-2">Como llegar</a> -->
   </div>
 </div>

@@ -1,18 +1,15 @@
-<div>
-  <h3 class="titulo">{{titulo}}</h3>
- 
-    <div class="row container-gas">
-        <div *ngFor="let item of arrTopRanking" class="box-gas col-12">
-          <h4> {{item.rotulo}}</h4>
-          <h5>Provincia: {{item.provincia}}</h5>
-          <h5>Municipio: {{item.municipio}}</h5>
-          <h6>Dirección: {{item.direccion}}</h6>
-          <p *ngIf="item.precio_biodiesel"> Precio {{titulo}} = {{item[tipoHijo]}} €</p>
-          
-        </div>
-      </div>
 
- 
+<h3 class="titulo">{{titulo}}</h3>
+<div *ngFor="let item of arrTopRanking" class="box-gas col-8 offset-2">
+
+  <h4> {{item.rotulo}}</h4>
+  <h5>Provincia: {{item.provincia}}</h5>
+  <h5>Municipio: {{item.municipio}}</h5>
+  <h6>Dirección: {{item.direccion}}</h6>
+
+  <div *ngIf="item[tipoHijo]">
+    <p>Precio {{titulo}}: {{item[tipoHijo]}} €</p>
+  </div>
 
 
 </div>
