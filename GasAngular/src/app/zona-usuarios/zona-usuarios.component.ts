@@ -31,7 +31,7 @@ export class ZonaUsuariosComponent implements OnInit {
   tokenUsuario: string
   nombreUsuario: string
   mostrar: boolean
-
+  
 
   constructor(private gasService: GasService, private router: Router) {
 
@@ -188,6 +188,13 @@ export class ZonaUsuariosComponent implements OnInit {
       })
     })
   }
+
+
+
+
+
+
+ 
 
   handleFavoritos() {
     this.router.navigate(['/favoritos'])

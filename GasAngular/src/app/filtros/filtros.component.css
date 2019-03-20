@@ -6,8 +6,8 @@
 }
 .box-gas{
     background-color: #87c0cd;
-    border: 1px solid #226597;
-    border-radius: 5px;
+    border: 10px solid#1b89ac;
+    border-radius: 15px;
 }
 .box-gas p{
     border: 1px solid #226597;
@@ -19,8 +19,9 @@
     padding: 10px;
     background-color: #293f56;
     color: white;
-    margin-top: 10px;
+    margin-top: 20px;
     border-radius: 5px;
+    
 }
 .container-gas{
     width: 80%;

@@ -14,10 +14,15 @@
 .titulo{
     text-align: center;
 }
-.box-gas{
+/* .box-gas{
     background-color: #87c0cd;
     border: 1px solid #226597;
     border-radius: 5px;
+} */
+.box-gas{
+    background-color: #87c0cd;
+    border: 10px solid#1b89ac;
+    border-radius: 15px;
 }
 .box-gas p{
     border: 1px solid #226597;
@@ -35,4 +40,17 @@
 .container-gas{
     width: 80%;
     margin: 0 auto;
+}
+.iconOK{
+    color: tomato;
+    cursor: pointer;
+}
+
+.iconKO{
+    cursor: pointer;
+    color: black;
+}
+.iconOK:hover{
+    color:grey;
+    transition: 500ms;
 }

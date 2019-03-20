@@ -23,8 +23,11 @@ export class RankingComponent implements OnInit {
 
     this.gasService.getRanking().then(result => {  
       this.topFive = result
-     //console.log(this.topFive)
-     // console.log(this.topFive['biodiesel'][1].precio_biodiesel)
+     
+
+     
+
+
     })
   }
 
