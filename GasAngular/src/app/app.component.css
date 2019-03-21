@@ -33,7 +33,6 @@ header a:hover{
     transition: 350ms;
 }
 header .activa{
-    font-size: 20px;
     font-weight: bolder;  
 }
 footer{   
