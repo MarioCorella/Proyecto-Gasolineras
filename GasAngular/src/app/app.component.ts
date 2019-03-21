@@ -6,10 +6,11 @@ import { GasService } from './gas.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   title = 'Gas';
-  constructor(public gasService: GasService){}
 
-  
+  constructor(public gasService: GasService) { }
+
 }
 

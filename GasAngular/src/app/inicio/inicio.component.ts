@@ -7,12 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent implements OnInit {
-contenedor: any
+
+  contenedor: any
   constructor() { }
 
   ngOnInit() {
   }
-
-  
 
 }

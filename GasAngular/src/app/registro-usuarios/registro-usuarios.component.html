@@ -1,38 +1,38 @@
+<h2 class="titulo">Bienvenido a la zona de Registro</h2>
+<div class="col-6 offset-3">
+  <p class="titulo mt-3">Intoduce tus datos</p>
 
-    <h2 class="titulo">Bienvenido a la zona de Registro</h2>
-    <div class="col-6 offset-3">
-    <p class="titulo mt-3">Intoduce tus datos</p>
+  <h2>{{aviso}}</h2>
 
-    <h2>{{aviso}}</h2>
-  
-    <form  novalidate
-    [formGroup]="formRegistro" 
-    (ngSubmit)="handleRegistro()">
+  <form novalidate [formGroup]="formRegistro" (ngSubmit)="handleRegistro()">
 
-        <div class="form-group">
-          <label for="nombre">Usuario</label>
-          <input type="text" name="nombre" formControlName="nombre" class="form-control boton" autofocus>
-        </div>
-  
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email"  name="email" formControlName="email" class="form-control boton">
-          <p *ngIf="formRegistro.controls.email.errors?.required && formRegistro.controls.email.dirty">El campo email es requerido</p>
-          <p *ngIf="formRegistro.controls['email'].errors?.pattern && formRegistro.controls['email'].dirty">El campo debe ser un mail correcto</p>
-        </div>
+    <div class="form-group">
+      <label for="nombre">Usuario</label>
+      <input type="text" name="nombre" formControlName="nombre" class="form-control boton" autofocus>
+    </div>
 
-        <div class="form-group">
-          <label for="password">Contraseña</label>
-          <input type="password" class="form-control boton" name="password" formControlName="password">
-          <p *ngIf="formRegistro.controls.password.errors?.required &&             formRegistro.controls.password.dirty">El campo Contraseña es requerido</p>
-          <p *ngIf="formRegistro.controls['password'].errors?.pattern && formRegistro.controls['password'].dirty">El campo debe ser una contraseña correcta</p>
-        </div>
-  
-        <button type="submit" [ngClass]="{'button-disable': formRegistro.invalid}" [disabled]="formRegistro.invalid"  class="btn btn-primary boton col-2 offset-5 mb-3 mt-3">Enviar</button>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" name="email" formControlName="email" class="form-control boton">
+      <p *ngIf="formRegistro.controls.email.errors?.required && formRegistro.controls.email.dirty">El campo email es
+        requerido</p>
+      <p *ngIf="formRegistro.controls['email'].errors?.pattern && formRegistro.controls['email'].dirty">El campo debe
+        ser un mail correcto</p>
+    </div>
 
-        
-    </form>
+    <div class="form-group">
+      <label for="password">Contraseña</label>
+      <input type="password" class="form-control boton" name="password" formControlName="password">
+      <p *ngIf="formRegistro.controls.password.errors?.required &&             formRegistro.controls.password.dirty">El
+        campo Contraseña es requerido</p>
+      <p *ngIf="formRegistro.controls['password'].errors?.pattern && formRegistro.controls['password'].dirty">El campo
+        debe ser una contraseña correcta</p>
+    </div>
 
-  </div>
+    <button type="submit" [ngClass]="{'button-disable': formRegistro.invalid}" [disabled]="formRegistro.invalid"
+      class="btn btn-primary boton col-2 offset-5 mb-3 mt-3">Enviar</button>
 
-  
+
+  </form>
+
+</div>

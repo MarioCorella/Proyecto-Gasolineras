@@ -28,7 +28,6 @@ module.exports = {
    create: create,
    edit: edit,
    update: update
-//    comprobarReg: comprobarReg
 }
 
 

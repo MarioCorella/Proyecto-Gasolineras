@@ -6,7 +6,7 @@ const filtrosRouter = require('./api/filtros');
 
 /* http://localhost:3000/api */
 router.get('/', function(req, res) {
-    res.send('/API funciona');
+    res.send('/API OK');
   });
 
   router.use('/usuarios', usuariosRouter);

@@ -9,10 +9,10 @@ import { Router } from '@angular/router';
 })
 export class FavoritosComponent implements OnInit {
 
-   
-   arrFavoritos: any[]
-   tokenUsuario: string
-   
+
+  arrFavoritos: any[]
+  tokenUsuario: string
+
   constructor(private gasService: GasService, private router: Router) { }
 
   ngOnInit() {
@@ -20,18 +20,18 @@ export class FavoritosComponent implements OnInit {
     //console.log(this.arrInput)
     this.gasService.getFavoritos(this.tokenUsuario).then((result) => {
       this.arrFavoritos = result
-      console.log(this.arrFavoritos) 
+      console.log(this.arrFavoritos)
     })
   }
 
-  deleteFavorite(id){
+  deleteFavorite(id) {
     console.log(id)
     console.log(this.tokenUsuario)
     this.gasService.deleteFavorite(id, this.tokenUsuario).then((result) => {
       console.log('hola')
       this.gasService.getFavoritos(this.tokenUsuario).then((result) => {
         this.arrFavoritos = result
-        console.log(this.arrFavoritos) 
+        console.log(this.arrFavoritos)
       })
     })
   }

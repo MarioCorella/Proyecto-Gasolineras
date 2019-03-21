@@ -9,17 +9,13 @@ import { GasService } from '../gas.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
- 
+
   nombreUsuario: string
-
-
 
   formLogin: FormGroup
   constructor(private gasService: GasService,
-              private router: Router) { }
+    private router: Router) { }
 
-
-    
 
   ngOnInit() {
     this.formLogin = new FormGroup({
@@ -30,25 +26,25 @@ export class LoginComponent implements OnInit {
         Validators.required,
         Validators.pattern(/^[a-zA-Z]\w{3,14}$/)
       ]),
-    }, )
-  }
-
-  handleFormulario(){
-    this.gasService.comprobarLogin(this.formLogin.value).then((res)=>{
-     this.nombreUsuario = this.formLogin.value.nombre
-      console.log(res)
-      if(res['token']){
-        localStorage.setItem('Token', res['token'])
-        this.router.navigate(['/zona_usuarios'])
-       }else if(res['error']){
-         alert('El usuario y/o la contraseña no son correctos')      
-       }
     })
   }
- 
-  navRegistro(){
+
+  handleFormulario() {
+    this.gasService.comprobarLogin(this.formLogin.value).then((res) => {
+      this.nombreUsuario = this.formLogin.value.nombre
+      console.log(res)
+      if (res['token']) {
+        localStorage.setItem('Token', res['token'])
+        this.router.navigate(['/zona_usuarios'])
+      } else if (res['error']) {
+        alert('El usuario y/o la contraseña no son correctos')
+      }
+    })
+  }
+
+  navRegistro() {
     this.router.navigate(['registro'])
   }
-    
+
 
 }

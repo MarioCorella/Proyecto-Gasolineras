@@ -14,8 +14,6 @@ export class VistaRankingComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    //console.log(this.arrTopRanking)
-    //console.log(this.tipoHijo)
   }
 
  

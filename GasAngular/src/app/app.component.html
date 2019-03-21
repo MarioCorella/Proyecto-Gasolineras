@@ -7,20 +7,20 @@
 
     <ul class="col-xs-12 col-md-6 col-xl-7 nav justify-content-end menu">
       <li class="nav-item">
-        <a class="nav-link active" [routerLink]="['/inicio']" [routerLinkActive]="'active'">Inicio</a>
+        <a class="nav-link " [routerLink]="['/inicio']" [routerLinkActive]="'active'">Inicio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" [routerLink]="['/filtros']" [routerLinkActive]="'active'">Buscador</a>
+        <a class="nav-link " [routerLink]="['/filtros']" [routerLinkActive]="'active'">Buscador</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" [routerLink]="['/ranking']" [routerLinkActive]="'active'">Ranking</a>
+        <a class="nav-link " [routerLink]="['/ranking']" [routerLinkActive]="'active'">Ranking</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" [routerLink]="['/login']" [routerLinkActive]="'active'">Login</a>
+        <a class="nav-link " [routerLink]="['/login']" [routerLinkActive]="'active'">Login</a>
       </li>
       <li class="nav-item">
-        <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Zona Usuarios</a> -->
-        <a [ngClass]="{'nav-link': true, 'disabled':!gasService.estadoLogin()}" [routerLink]="['/zona_usuarios']" [routerLinkActive]="'active'">Zona Usuarios</a>
+        <a [ngClass]="{'nav-link': true, 'disabled':!gasService.estadoLogin()}" [routerLink]="['/zona_usuarios']"
+          [routerLinkActive]="'active'">Zona Usuarios</a>
       </li>
 
     </ul>
@@ -28,100 +28,12 @@
   </header>
 
   <router-outlet></router-outlet>
-  
+
 </div>
 <footer class="mt-4">
-    <div>
-      <h6>Fuente: Datos del Ministerio para la Transición Ecológica.</h6>
-      <p>La información publicada en este sitio web tiene únicamente carácter informativo y no constituye una
-        comunicación de actos administrativos ni comunicados oficiales.</p>
-    </div>
-  </footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 
-<div class="container-fluid">
-
-
-  <header class="row">
-    <div class="titulo col-10">
-      <h1>Elige el precio de tu gasolina</h1>
-    </div>
-    <div class="login cols-1">
-      <a class="nav-link active" [routerLink]="['/login']">Log in</a>
-    </div>
-  </header>
-
-
-  <div class="row">
-    <nav class="nav flex-column col-2">
-      <a class="nav-link " [routerLink]="['/inicio']" [routerLinkActive]="'active'">Inicio</a>
-      <a class="nav-link " [routerLink]="['/filtros']" [routerLinkActive]="'active'">Buscador</a>
-      <a class="nav-link " [routerLink]="['/ranking']" [routerLinkActive]="'active'">Ranking</a>
-      <a [ngClass]="{'nav-link': true, 'disabled':!gasService.estadoLogin()}" [routerLink]="['/zona_usuarios']" [routerLinkActive]="'active'">Zona Usuarios</a>
-    </nav>
-
-    <div class="col-10">
-      <router-outlet></router-outlet>
-    </div>
+  <div>
+    <h6>Fuente: Datos del Ministerio para la Transición Ecológica.</h6>
+    <p>La información publicada en este sitio web tiene únicamente carácter informativo y no constituye una
+      comunicación de actos administrativos ni comunicados oficiales.</p>
   </div>
-
-  <div class="row">
-    <footer class="col-12">
-
-      <h6>Fuente: Datos del Ministerio para la Transición Ecológica.</h6>
-      <p>La información publicada en este sitio web tiene únicamente carácter informativo y no constituye una
-        comunicación de actos administrativos ni comunicados oficiales.</p>
-    </footer>
-  </div>
-
-</div>  -->
+</footer>

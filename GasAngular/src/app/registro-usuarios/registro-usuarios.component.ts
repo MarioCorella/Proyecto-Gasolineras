@@ -44,11 +44,6 @@ export class RegistroUsuariosComponent implements OnInit {
           this.aviso = 'La dirección de correo introducida ya estaba registrada'
        }
     })
-   
-
-    
-
-
     
   }
 }

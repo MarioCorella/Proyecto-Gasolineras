@@ -1,8 +1,6 @@
 const db = require('../db');
 
 
-
-
 let getByIdProv = (idProv, municipio, done) => {
     db.get().query('SELECT * FROM gas_station WHERE idprovincia = ? AND municipio = ?', [idProv, municipio], (err, result) => {
         if (err) return console.log(err.message)

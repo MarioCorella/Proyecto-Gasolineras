@@ -1,43 +1,31 @@
-.grafico img{
-    width: 100%;
-    height: auto;
-}
- h5{
-    text-align: center; 
-    margin-bottom: 15px;
-}
-.home-text{
-    margin: auto;
-}
-.tit-acord{
-    font-weight: 400;
-    text-decoration: underline;
-    color: black;
-}
-span{
-    font-size: 10px;
+.grafico img {
+  width: 100%;
+  height: auto;
 }
 
-hr{
-    background-color:#293f56;
-}
-.container{
-    display: hidden;
-}
-.consejos .card-header{
-    background-color: #87c0cd;
-   
+h5 {
+  text-align: center;
+  margin-bottom: 15px;
 }
 
-.consejos .tit-acord{
-    font-weight: bold;
-    text-decoration: none;
+.home-text {
+  margin: auto;
 }
 
-.consejos .card-body{
-    background-color: #eee;
+.tit-acord {
+  font-weight: 400;
+  text-decoration: underline;
+  color: white;
 }
 
-    
+span {
+  font-size: 10px;
+}
 
+hr {
+  background-color: #293f56;
+}
 
+.consejos .card-body {
+  background-color: #eee;
+}

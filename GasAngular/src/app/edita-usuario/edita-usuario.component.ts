@@ -10,9 +10,6 @@ import { Router } from '@angular/router';
 })
 
 
-
-
-
 export class EditaUsuarioComponent implements OnInit {
 
   id: number
@@ -22,8 +19,7 @@ export class EditaUsuarioComponent implements OnInit {
   actualizado: any[]
 
   constructor(private gasService: GasService,
-              private router: Router) {
-
+    private router: Router) {
   }
 
   ngOnInit() {
@@ -49,10 +45,10 @@ export class EditaUsuarioComponent implements OnInit {
     this.gasService.editaUsuario(
       this.id,
       this.formEdita.value.nombre,
-      this.formEdita.value.email,   
+      this.formEdita.value.email,
     ).then((res) => {
       this.actualizado = res
-      if(res){
+      if (res) {
         this.router.navigate(['/zona_usuarios'])
       }
     })
@@ -83,4 +79,3 @@ export class EditaUsuarioComponent implements OnInit {
 
 
 
- // Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/),
